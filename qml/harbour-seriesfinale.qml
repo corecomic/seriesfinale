@@ -57,6 +57,7 @@ ApplicationWindow
         signal infoMarkupChanged()
         signal loadingChanged(bool loading)
         signal showListChanged(bool changed)
+        signal episodesListUpdated()
 
         Component.onCompleted: {
             addImportPath(Qt.resolvedUrl('../src'));
@@ -76,6 +77,7 @@ ApplicationWindow
             setHandler('infoMarkupChanged', python.infoMarkupChanged);
             setHandler('showListChanged', python.showListChanged);
             setHandler('loadingChanged', python.loadingChanged);
+            setHandler('episodesListUpdated', python.episodesListUpdated);
 
             importModule('seriesfinale', function () {
                 python.call('seriesfinale.seriesfinale.getVersion', [], function(result) {

@@ -713,14 +713,14 @@ class SeriesManager(object):
 
     def _set_show_episodes_complete_cb(self, show, images_worker, last_call, tvdbcompleteshow, error):
         if not error and tvdbcompleteshow:
-            episode_list = ListModel([self._convert_thetvdbepisode_to_episode(tvdb_ep,show) \
+            episode_list = list([self._convert_thetvdbepisode_to_episode(tvdb_ep,show) \
                             for tvdb_ep in tvdbcompleteshow[1]])
             show.update_episode_list(episode_list)
-        self.updateShowEpisodesComplete.emit(show)
-        show.episodesListUpdated.emit()
+        #pyotherside.send('updateShowEpisodesComplete', show)
+        pyotherside.send('episodesListUpdated')
         show.set_updating(False)
         if last_call:
-            self.updateShowsCallComplete.emit(show)
+            #pyotherside.send('updateShowsCallComplete', show)
             self.isUpdating = False
             pyotherside.send('updating', self.isUpdating)
             images_worker.start()

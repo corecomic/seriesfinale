@@ -45,9 +45,8 @@ Page {
             }
         }
 
-        onCoverImageChanged: {
-            update();
-        }
+        onEpisodesListUpdated: update()
+        onCoverImageChanged: update()
 
         onInfoMarkupChanged: {
             hasChanged = true;
@@ -63,8 +62,9 @@ Page {
         // PullDownMenu
         PullDownMenu {
             MenuItem {
-                text: "Refresh"
-                onClicked: seriesPage.update()
+                text: "About"
+                onClicked: pageStack.push(aboutComponent.createObject(pageStack))
+                Component { id: aboutComponent; AboutPage {} }
             }
             MenuItem {
                 text: "Settings"
@@ -72,9 +72,8 @@ Page {
                 Component { id: settingsComponent; SettingsPage {} }
             }
             MenuItem {
-                text: "About"
-                onClicked: pageStack.push(aboutComponent.createObject(pageStack))
-                Component { id: aboutComponent; AboutPage {} }
+                text: "Refresh"
+                onClicked: python.call('seriesfinale.seriesfinale.series_manager.update_all_shows_episodes', [])
             }
             MenuItem {
                 text: "Add Show"
