@@ -1,7 +1,10 @@
 FIX:
-[ ] EpisodePage: flickable...
+[ ] show page refresh when cover loaded
+
 
 
 IMPLEMENT:
 [ ] auto save
 [ ] allow to change episode in EpisodePage
+[ ] deleting seasons
+
