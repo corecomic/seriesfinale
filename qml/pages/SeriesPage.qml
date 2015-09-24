@@ -1,0 +1,160 @@
+import QtQuick 2.0
+import Sailfish.Silica 1.0
+
+Page {
+    id: seriesPage
+
+    property variant series: undefined
+
+    property bool isUpdating: false
+    property bool hasChanged: false
+
+    function update() {
+        python.call('seriesfinale.seriesfinale.series_manager.get_series_list', [], function(result) {
+            // Clear the data in the list model
+            seriesList.clear();
+            // Load the received data into the list model
+            for (var i=0; i<result.length; i++) {
+                seriesList.append(result[i]);
+            }
+            series = seriesList;
+            hasChanged = false;
+        });
+    }
+
+    onStatusChanged: {
+        if (status === PageStatus.Activating && hasChanged) {
+            update();
+        }
+    }
+
+    Connections {
+        target: python
+
+        onLoadingChanged: {
+            seriesPage.isUpdating = loading;
+            if(!loading) {
+                update();
+            }
+        }
+
+        onUpdatingChanged: {
+            seriesPage.isUpdating = updating;
+            if(!updating) {
+                update();
+            }
+        }
+
+        onCoverImageChanged: {
+            update();
+        }
+
+        onInfoMarkupChanged: {
+            hasChanged = true;
+        }
+    }
+
+
+    SilicaListView {
+        id: listView
+        anchors.fill: parent
+        spacing: Theme.paddingMedium
+
+        // PullDownMenu
+        PullDownMenu {
+            MenuItem {
+                text: "Refresh"
+                onClicked: seriesPage.update()
+            }
+            MenuItem {
+                text: "Settings"
+                onClicked: pageStack.push(settingsComponent.createObject(pageStack))
+                Component { id: settingsComponent; SettingsPage {} }
+            }
+            MenuItem {
+                text: "About"
+                onClicked: pageStack.push(aboutComponent.createObject(pageStack))
+                Component { id: aboutComponent; AboutPage {} }
+            }
+            MenuItem {
+                text: "Add Show"
+                visible: !seriesPage.isUpdating
+                onClicked: { pageStack.push(addShowComponent.createObject(pageStack)) }
+                Component { id: addShowComponent; AddShow {} }
+            }
+        }
+
+        header: PageHeader {
+            id: header
+            title: "SeriesFinale"
+        }
+
+        model: ListModel {
+            id: seriesList
+        }
+
+        delegate: ListRowDelegate {
+            id: listDelegate
+
+            title: model.showName
+            subtitle: model.infoMarkup
+            iconSource: model.coverImage
+            Component {
+                id: showPageComponent
+                ShowPage { show: model }
+            }
+
+            Component {
+                id: contextMenu
+                ContextMenu {
+                    MenuItem {
+                        text: "Delete show";
+                        onClicked: showRemorseItem()
+                    }
+                }
+            }
+
+            RemorseItem { id: remorse }
+            function showRemorseItem() {
+                var idx = index
+                remorse.execute(listDelegate, "Deleting", function() {
+                    python.call('seriesfinale.seriesfinale.series_manager.delete_show_by_name', [model.showName]);
+                    seriesPage.update();
+                })
+            }
+
+            onClicked: {
+                pageStack.push(showPageComponent.createObject(pageStack));
+            }
+        }
+
+        ViewPlaceholder {
+            id: emptyText
+            text: 'No shows'
+            enabled: seriesList.count == 0 && !seriesPage.isUpdating
+        }
+
+        BusyIndicator {
+            id: loadingIndicator
+            visible: seriesPage.isUpdating
+            running: visible
+            anchors.centerIn: parent
+            size: BusyIndicatorSize.Large
+        }
+
+        VerticalScrollDecorator {}
+    }
+}
+
+
+
+//Page {
+//    id: page
+
+//    Header {
+//       text: "SeriesFinale"
+//       updating: series_manager.updating
+//       hasRefreshAction: !emptyText.visible && !loadingIndicator.visible
+//       onRefreshActionActivated: series_manager.update_all_shows_episodes()
+//    }
+//}
