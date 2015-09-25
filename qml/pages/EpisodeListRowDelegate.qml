@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-ListItem {
+BackgroundItem {
     id: epListItem
     contentHeight: Theme.itemSizeSmall
 
@@ -12,8 +12,8 @@ ListItem {
 
     Row {
         anchors.fill: parent
-        anchors.margins: Theme.paddingLarge
-        spacing: Theme.paddingMedium
+        anchors.rightMargin: Theme.paddingLarge
+        //spacing: Theme.paddingMedium
 
         Switch {
             id: markItem

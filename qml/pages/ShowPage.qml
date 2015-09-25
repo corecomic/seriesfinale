@@ -41,16 +41,15 @@ Page {
             }
         }
 
-        onInfoMarkupChanged: {
-            hasChanged = true;
-        }
+        onEpisodesListUpdated: update()
+        onInfoMarkupChanged: hasChanged = true
+
+        //onShowArtChanged: delegate.iconSource = show.get_season_image(model.data)
 
         //onInfoMarkupChanged: {
         //    delegate.subtitle = show.get_season_info_markup(model.data)
         //    markAllItem.text = show.is_completely_watched(model.data) ? 'Mark None' : 'Mark All'
         //}
-        //onShowArtChanged: delegate.iconSource = show.get_season_image(model.data)
-        //onEpisodesListUpdated: update()
     }
 
     Dialog {
@@ -110,7 +109,8 @@ Page {
             }
             MenuItem {
                 text: "Refresh"
-                onClicked: showPage.update() //series_manager.update_show_episodes(show)
+                visible: false
+                onClicked: python.call('seriesfinale.seriesfinale.series_manager.update_show_by_name', [show.showName])
             }
         }
 

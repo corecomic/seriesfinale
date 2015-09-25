@@ -687,6 +687,10 @@ class SeriesManager(object):
     def update_show_episodes(self, show):
         return self.update_all_shows_episodes([show])
 
+    def update_show_by_name(self, show_name):
+        show = self.get_show_by_name(show_name)
+        return self.update_all_shows_episodes([show])
+
     #@QtCore.Slot()
     def update_all_shows_episodes(self, show_list = []):
         self.isUpdating = True
@@ -717,7 +721,7 @@ class SeriesManager(object):
                             for tvdb_ep in tvdbcompleteshow[1]])
             show.update_episode_list(episode_list)
         #pyotherside.send('updateShowEpisodesComplete', show)
-        pyotherside.send('episodesListUpdated')
+        pyotherside.send('episodesListUpdated', show.get_name())
         show.set_updating(False)
         if last_call:
             #pyotherside.send('updateShowsCallComplete', show)

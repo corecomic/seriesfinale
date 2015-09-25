@@ -45,13 +45,14 @@ Page {
             }
         }
 
-        onEpisodesListUpdated: update()
-        onCoverImageChanged: update()
 
-        onInfoMarkupChanged: {
-            hasChanged = true;
+        onCoverImageChanged: update()
+        onEpisodesListUpdated: {
+            update()
         }
+        onInfoMarkupChanged: hasChanged = true
     }
+
 
 
     SilicaListView {
@@ -73,6 +74,7 @@ Page {
             }
             MenuItem {
                 text: "Refresh"
+                visible: seriesList.count != 0
                 onClicked: python.call('seriesfinale.seriesfinale.series_manager.update_all_shows_episodes', [])
             }
             MenuItem {

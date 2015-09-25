@@ -62,7 +62,8 @@ Page {
 
                 Label {
                     font.pixelSize: Theme.fontSizeTiny
-                    text: 'SeriesFinale uses <a href="http://www.thetvdb.com">TheTVDB</a> API but is not endorsed or certified by TheTVDB. Please contribute to it if you can.'
+                    text: "<style>a { color: " + Theme.highlightColor + "; }</style>" + 'SeriesFinale uses <a href="http://www.thetvdb.com">TheTVDB</a> API but is not endorsed or certified by TheTVDB. Please contribute to it if you can.'
+                    textFormat: Text.RichText
                     color: Theme.primaryColor
                     wrapMode: Text.WordWrap
                     width: parent.width
@@ -71,7 +72,8 @@ Page {
 
                 Label {
                     font.pixelSize: Theme.fontSizeTiny
-                    text: license
+                    text: "<style>a { color: " + Theme.highlightColor + "; }</style>" + license
+                    textFormat: Text.RichText
                     color: Theme.primaryColor
                     wrapMode: Text.WordWrap
                     width: parent.width

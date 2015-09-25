@@ -13,6 +13,7 @@ ListItem {
 
     Row {
         anchors.fill: parent
+        anchors.rightMargin: Theme.paddingLarge
         spacing: Theme.paddingMedium
 
         Image {
@@ -27,18 +28,22 @@ ListItem {
         }
 
         Column {
+            id: column
             anchors.verticalCenter: parent.verticalCenter
+            width: parent.width - icon.width - Theme.paddingMedium
 
             Label {
                 id: title
+                width: parent.width
                 font.pixelSize: Theme.fontSizeMedium
-                color: Theme.primaryColor
+                color: highlighted ? Theme.highlightColor : Theme.primaryColor
+                truncationMode: TruncationMode.Fade
             }
 
             Label {
                 id: subtitle
                 font.pixelSize: Theme.fontSizeTiny
-                color: Theme.secondaryColor
+                color: highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
                 visible: text != ""
             }
         }

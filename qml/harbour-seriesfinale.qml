@@ -57,7 +57,7 @@ ApplicationWindow
         signal infoMarkupChanged()
         signal loadingChanged(bool loading)
         signal showListChanged(bool changed)
-        signal episodesListUpdated()
+        signal episodesListUpdated(string name)
 
         Component.onCompleted: {
             addImportPath(Qt.resolvedUrl('../src'));
