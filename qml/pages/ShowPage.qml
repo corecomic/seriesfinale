@@ -124,7 +124,7 @@ Page {
         } //show.get_seasons_model()
 
         delegate: ListRowDelegate {
-            id: delegate
+            id: listDelegate
 
             title: model.seasonName
             subtitle: model.seasonInfoMarkup
@@ -151,13 +151,19 @@ Page {
                     }
                     MenuItem {
                         text: "Delete season";
-                        onClicked: {
-                            show.delete_season(model.data)
-                            listView.model = show.get_seasons_model()
-                        }
+                        onClicked: showRemorseItem()
                     }
                 }
             }
+
+            RemorseItem { id: remorse }
+            function showRemorseItem() {
+                remorse.execute(listDelegate, "Deleting", function() {
+                    python.call('seriesfinale.seriesfinale.series_manager.delete_season', [showPage.show.showName, model.seasonNumber]);
+                    showPage.update();
+                })
+            }
+
             onClicked: pageStack.push(seasonPageComponent.createObject(pageStack))
         }
 

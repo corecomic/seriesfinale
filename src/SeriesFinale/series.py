@@ -194,7 +194,7 @@ class Show(object):
 
     def delete_episode(self, episode):
         series_manager = SeriesManager()
-        for i in xrange(len(self.episode_list)):
+        for i in range(len(self.episode_list)):
             if self.episode_list[i] == episode:
                 del self.episode_list[i]
                 series_manager.changed = True
@@ -869,6 +869,10 @@ class SeriesManager(object):
     def delete_show_by_name(self, show_name):
         show = self.get_show_by_name(show_name)
         self.delete_show(show)
+
+    def delete_season(self, show_name, season):
+        show = self.get_show_by_name(show_name)
+        show.delete_season(season)
 
     def _get_shows_from_id(self, id):
         return [show for show in self.series_list if show.id == id]
