@@ -25,6 +25,7 @@ ListItem {
             smooth: true
             source: ''
             visible: source != ''
+            opacity: String(source).indexOf('placeholderimage') > -1 ? 0.5 : 1.0
         }
 
         Column {
