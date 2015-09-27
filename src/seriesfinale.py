@@ -101,6 +101,8 @@ class SeriesFinale:
         async_worker.queue.put(save_shows_item)
         async_worker.queue.put(save_conf_item)
         async_worker.start()
+        # FIXME: Wait a little while for the saving to complete.
+        time.sleep(1)
 
     def saveSettings(self):
         self.settings.save(constants.SF_CONF_FILE)
@@ -114,7 +116,7 @@ class SeriesFinale:
         self.series_manager.auto_save(False)
 
     def _save_finished_cb(self, dummy_arg, error):
-        pass
+        logging.debug('All saved!')
 
 seriesfinale = SeriesFinale()
-#pyotherside.atexit(seriesfinale.closeEvent()) #FIXME not working on sailfish os
+#pyotherside.atexit(seriesfinale.closeEvent()) #FIXME: not working on sailfish os
