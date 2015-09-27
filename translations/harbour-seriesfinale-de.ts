@@ -4,10 +4,6 @@
 <context>
     <name>AddShow</name>
     <message>
-        <source>Show Page 2</source>
-        <translation type="unfinished">Zur Seite 2</translation>
-    </message>
-    <message>
         <source>Add show</source>
         <translation type="unfinished"></translation>
     </message>

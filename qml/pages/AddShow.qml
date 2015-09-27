@@ -37,12 +37,12 @@ Page {
 
         VerticalScrollDecorator {}
 
-        PullDownMenu {
-            MenuItem {
-                text: qsTr("Show Page 2")
-                onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
-            }
-        }
+//        PullDownMenu {
+//            MenuItem {
+//                text: qsTr("Browse")
+//                onClicked: pageStack.push(Qt.resolvedUrl("Browser.qml"))
+//            }
+//        }
 
 
         Column {
