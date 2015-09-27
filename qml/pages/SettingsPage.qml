@@ -7,6 +7,7 @@ Dialog {
 
     onAccepted: {
         python.call('seriesfinale.seriesfinale.settingsWrapper.setShowsSort', [showSorting.currentIndex])
+        python.call('seriesfinale.seriesfinale.settingsWrapper.setSeasonsOrder', [seasonSorting.currentIndex])
         python.call('seriesfinale.seriesfinale.settingsWrapper.setEpisodesOrder', [episodeSorting.currentIndex])
         python.call('seriesfinale.seriesfinale.settingsWrapper.setAddSpecialSeasons', [specialSeasonsSwitch.checked])
         python.call('seriesfinale.seriesfinale.saveSettings', [])
@@ -16,12 +17,16 @@ Dialog {
         python.call('seriesfinale.seriesfinale.settingsWrapper.getShowsSort', [], function(result) {
             showSorting.currentIndex = result;
         })
+        python.call('seriesfinale.seriesfinale.settingsWrapper.getSeasonsOrder', [], function(result) {
+            seasonSorting.currentIndex = result;
+        })
         python.call('seriesfinale.seriesfinale.settingsWrapper.getEpisodesOrder', [], function(result) {
             episodeSorting.currentIndex = result;
         })
         python.call('seriesfinale.seriesfinale.settingsWrapper.getAddSpecialSeasons', [], function(result) {
             specialSeasonsSwitch.checked = result;
         })
+        seriesPage.hasChanged = true
     }
 
     SilicaFlickable {
@@ -55,6 +60,16 @@ Dialog {
                     id: showSortingMenu
                     MenuItem { text: "By title"; }
                     MenuItem { text: "By episode date"; }
+                }
+            }
+
+            ComboBox {
+                id: seasonSorting
+                label: qsTr("Seasons sorting")
+                menu: ContextMenu {
+                    id: seasonSortingMenu
+                    MenuItem { text: "1-9"; }
+                    MenuItem { text: "9-1"; }
                 }
             }
 

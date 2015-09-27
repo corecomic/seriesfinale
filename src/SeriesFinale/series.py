@@ -22,6 +22,7 @@ import os
 import pyotherside
 from SeriesFinale.lib import thetvdbapi, serializer, constants
 from SeriesFinale.lib.util import image_downloader
+from SeriesFinale.lib.listmodel import *
 from xml.etree import ElementTree as ET
 from SeriesFinale.asyncworker import AsyncWorker, AsyncItem
 from SeriesFinale.lib.constants import TVDB_API_KEY, DATA_DIR, DEFAULT_LANGUAGES, SF_LANG_FILE
@@ -139,7 +140,7 @@ class Show(object):
                                 'seasonInfoMarkup': self.get_season_info_markup(season),
                                 'seasonImage': self.get_season_image(season),
                                 'isWatched': self.is_completely_watched(season)})
-        return season_list
+        return SortedSeasonsList(season_list, Settings())
 
     def get_seasons(self):
         seasons = []
@@ -168,12 +169,13 @@ class Show(object):
         episode_list = []
         for episode in self.get_episode_list_by_season(season):
             episode_list.append({'episodeName': episode.get_title(),
+                                 'episodeNumber': episode._get_episode_number(),
                                  'airDate': episode.get_air_date_text(),
                                  'isWatched': episode.get_watched(),
                                  'hasAired': episode.already_aired(),
                                  'episodeRating': episode.get_rating(),
                                  'overviewText': episode.get_overview()})
-        return episode_list
+        return SortedEpisodesList(episode_list, Settings())
 
     def update_episode_list(self, episode_list):
         add_special_seasons = Settings().getConf(Settings.ADD_SPECIAL_SEASONS)
@@ -332,6 +334,24 @@ class Show(object):
                     season_info += '<br/>' + _('<i>Next episode:</i> %s') % \
                                    next_episode.episode_number
         return season_info
+
+    def get_most_recent_air_date(self):
+        episodes = self.episode_list
+        aired_episodes = [episode for episode in episodes \
+                            if episode.already_aired()]
+        try:
+            return aired_episodes[-1].air_date
+        except:
+            return None
+
+    def get_next_unwatched_air_date(self):
+        episodes_info = self.get_episodes_info()
+        next_episode = episodes_info['next_episode']
+        try:
+            return next_episode.air_date
+        except:
+            return None
+
 
     def get_poster_prefix(self):
         if self.thetvdb_id != -1:
@@ -802,8 +822,10 @@ class SeriesManager(object):
             series_list.append({'showName': show.get_name(),
                                 'showOverview': show.get_overview(),
                                 'infoMarkup': show.get_info_markup(),
-                                'coverImage': show.cover_image()})
-        return series_list
+                                'coverImage': show.cover_image(),
+                                'lastAired': show.get_most_recent_air_date(),
+                                'nextToWatch': show.get_next_unwatched_air_date()})
+        return SortedSeriesList(series_list, Settings())
 
     def get_seasons_list(self, show_name):
         show = self.get_show_by_name(show_name)

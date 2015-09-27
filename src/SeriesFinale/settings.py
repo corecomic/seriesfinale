@@ -33,7 +33,7 @@ class Settings(object):
     LANDSCAPE = 2
 
     EPISODES_ORDER_CONF_NAME = 'episodes_order'
-    SEASONS_ORDER_CONF_NAME = 'episodes_order'
+    SEASONS_ORDER_CONF_NAME = 'seasons_order'
     SHOWS_SORT = 'shows_sort'
     SCREEN_ROTATION = 'screen_rotation'
     ADD_SPECIAL_SEASONS = 'add_special_seasons'

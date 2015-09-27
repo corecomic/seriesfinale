@@ -32,6 +32,11 @@ class SettingsWrapper():
     def setEpisodesOrder(self, newOrder):
         Settings().setConf(Settings.EPISODES_ORDER_CONF_NAME, newOrder)
 
+    def getSeasonsOrder(self):
+        return Settings().getConf(Settings.SEASONS_ORDER_CONF_NAME)
+    def setSeasonsOrder(self, newOrder):
+        Settings().setConf(Settings.SEASONS_ORDER_CONF_NAME, newOrder)
+
     def getShowsSort(self):
         return Settings().getConf(Settings.SHOWS_SORT)
     def setShowsSort(self, newOrder):

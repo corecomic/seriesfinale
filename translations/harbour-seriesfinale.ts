@@ -34,5 +34,9 @@
         <source>Episode sorting</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Seasons sorting</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
