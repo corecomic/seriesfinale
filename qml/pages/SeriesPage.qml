@@ -9,6 +9,10 @@ Page {
     property bool isUpdating: false
     property bool hasChanged: false
 
+    function getRandomNumber(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
     function update() {
         python.call('seriesfinale.seriesfinale.series_manager.get_series_list', [], function(result) {
             // Clear the data in the list model
@@ -19,6 +23,7 @@ Page {
             }
             series = seriesList;
             hasChanged = false;
+            coverImage = seriesList.get(getRandomNumber(0, result.length)).coverImage;
         });
     }
 
@@ -52,8 +57,6 @@ Page {
         }
         onInfoMarkupChanged: hasChanged = true
     }
-
-
 
     SilicaListView {
         id: listView

@@ -32,25 +32,10 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 CoverBackground {
-
-    Connections {
-        target: python
-
-        onLoadingChanged: {
-            if(!loading) {
-                //slideShowView.model = seriesPage.seriesList;
-            }
-        }
-
-        onUpdatingChanged: {
-            if(!updating) {
-                //slideShowView.model = seriesPage.seriesList;
-            }
-        }
-    }
+    id: coverPage
 
     Image {
-        source: 'seriesfinale_cover.png'
+        source: coverImage
         anchors.horizontalCenter: parent.horizontalCenter
         width: parent.width
         height: parent.height
@@ -63,6 +48,8 @@ CoverBackground {
         id: label
         anchors.centerIn: parent
         text: 'SeriesFinale'
+        font.pixelSize: Theme.fontSizeLarge
+        color: Theme.highlightColor
     }
 
     CoverActionList {

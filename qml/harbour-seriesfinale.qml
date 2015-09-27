@@ -31,13 +31,16 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "pages"
+import "cover"
 
 import io.thp.pyotherside 1.4
 
 ApplicationWindow
 {
     initialPage: Component { id: seriesPage; SeriesPage {} }
-    cover: Qt.resolvedUrl("cover/CoverPage.qml")
+    cover: Component { id: coverPage; CoverPage {} }
+
+    property string coverImage: 'seriesfinale_cover.png'
 
     Python {
         id: python
