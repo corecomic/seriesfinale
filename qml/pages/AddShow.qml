@@ -91,8 +91,6 @@ Page {
                         truncationMode: TruncationMode.Fade
                     }
                     onClicked: {
-                        //infoBanner.text = 'Getting show "' + model.data + '"'
-                        //infoBanner.show()
                         python.call('seriesfinale.seriesfinale.series_manager.get_complete_show', [model.data], function() {});
                         pageStack.pop()
                     }

@@ -13,7 +13,6 @@ BackgroundItem {
     Row {
         anchors.fill: parent
         anchors.rightMargin: Theme.paddingLarge
-        //spacing: Theme.paddingMedium
 
         Switch {
             id: markItem
@@ -21,7 +20,6 @@ BackgroundItem {
             checked: episode.isWatched
 
             onClicked: {
-                //episode.isWatched = !episode.isWatched
                 epListItem.watchToggled(checked)
             }
         }

@@ -148,16 +148,3 @@ Page {
         VerticalScrollDecorator {}
     }
 }
-
-
-
-//Page {
-//    id: page
-
-//    Header {
-//       text: "SeriesFinale"
-//       updating: series_manager.updating
-//       hasRefreshAction: !emptyText.visible && !loadingIndicator.visible
-//       onRefreshActionActivated: series_manager.update_all_shows_episodes()
-//    }
-//}

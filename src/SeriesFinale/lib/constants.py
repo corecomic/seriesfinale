@@ -23,12 +23,14 @@ import sys
 
 SF_NAME = 'SeriesFinale'
 SF_COMPACT_NAME = 'seriesfinale'
-SF_VERSION = '0.6.10'
+SF_VERSION = '1.0.0'
 SF_DESCRIPTION = 'SeriesFinale is a TV series browser and tracker application'
-SF_URL = 'http://www.igalia.com'
-SF_COPYRIGHT = 'Copyright © 2011-2015 Joaquim Rocha\n' \
+SF_URL = 'https://github.com/corecomic/seriesfinale'
+SF_COPYRIGHT = 'Copyright © 2015 Core Comic\n' \
+               'Copyright © 2011-2015 Joaquim Rocha\n' \
                'Copyright © 2010-2012 Igalia S. L.'
-SF_AUTHORS = ['Joaquim Rocha <me@joaquimrocha.com>',
+SF_AUTHORS = ['Core Comic <core.comic@gmail.com>',
+              'Joaquim Rocha <me@joaquimrocha.com>',
               'Juan A. Suarez <jasuarez@igalia.com>']
 SF_LICENSE = \
 """%(sf_name)s is free software: you can redistribute it and/or modify \

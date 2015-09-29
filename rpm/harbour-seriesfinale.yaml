@@ -1,18 +1,22 @@
 Name: harbour-seriesfinale
 Summary: SeriesFinale is a TV series browser and tracker application.
-Version: 0.1.0
+Version: 1.0.0
 Release: 1
 # The contents of the Group field should be one of the groups listed here:
 # http://gitorious.org/meego-developer-tools/spectacle/blobs/master/data/GROUPS
-Group: Qt/Qt
-URL: http://example.org/
-License: LICENSE
+Group: Applications/Internet
+URL: https://github.com/corecomic/seriesfinale
+License: GPLv3
 # This must be generated before uploading a package to a remote build service.
 # Usually this line does not need to be modified.
 Sources:
 - '%{name}-%{version}.tar.bz2'
 Description: |
-  Short description of my SailfishOS Application
+ SeriesFinale is a TV series browser and tracker application
+ Its goal is to help you manage the TV shows you watch regularly and
+ keep track of the episodes you have seen so far. The shows and episodes
+ can be retrieved automatically by using the “TheTVDB API” to help you
+ get to the "series finale" with the least effort.
 Configure: none
 # The qtc5 builder inserts macros to allow QtCreator to have fine
 # control over qmake/make execution

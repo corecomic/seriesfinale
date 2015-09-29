@@ -13,11 +13,11 @@ Name:       harbour-seriesfinale
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    SeriesFinale is a TV series browser and tracker application.
-Version:    0.1.0
+Version:    1.0.0
 Release:    1
-Group:      Qt/Qt
-License:    LICENSE
-URL:        http://example.org/
+Group:      Applications/Internet
+License:    GPLv3
+URL:        https://github.com/corecomic/seriesfinale
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-seriesfinale.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
@@ -29,7 +29,11 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %description
-Short description of my SailfishOS Application
+SeriesFinale is a TV series browser and tracker application
+Its goal is to help you manage the TV shows you watch regularly and
+keep track of the episodes you have seen so far. The shows and episodes
+can be retrieved automatically by using the “TheTVDB API” to help you
+get to the "series finale" with the least effort.
 
 
 %prep
