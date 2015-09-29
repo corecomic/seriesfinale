@@ -39,11 +39,6 @@ _ = gettext.gettext
 
 class Show(object):
 
-    # TODO convert signals for pyotherside / pyotherside.send('SIGNAL', VALUE)
-    #infoMarkupChanged = QtCore.Signal()
-    #showArtChanged = QtCore.Signal()
-    #episodesListUpdated = QtCore.Signal()
-
     def __init__(self, name, genre = None, overview = None, network = None,
                  rating = None, actors = [], episode_list = [], image = None,
                  thetvdb_id = -1, season_images = {}, id = -1, language = None,
@@ -64,14 +59,11 @@ class Show(object):
         self.downloading_season_image = downloading_season_image
         self._updating = False
 
-    #updatingChanged = QtCore.Signal()
     def get_updating(self): return self._updating
     def set_updating(self, updating):
         self._updating = updating
         pyotherside.send('showUpdating', self._updating)
-    #updating = QtCore.Property(bool,get_updating,notify=updatingChange)d
 
-    #coverImageChanged = QtCore.Signal()
     def cover_image(self):
         try:
             if os.path.exists(self.image):
@@ -82,34 +74,27 @@ class Show(object):
     def set_cover_image(self, new_path):
         self.image = new_path
         pyotherside.send('coverImageChanged', self.image)
-    #coverImage = QtCore.Property(unicode,cover_image,set_cover_image,notify=coverImageChanged)
 
-    #nameChanged = QtCore.Signal()
     def get_name(self):
         return self.name
     def set_name(self, name):
         self.name = name
         pyotherside.send('nameChanged', self.name)
-    #showName = QtCore.Property(unicode,get_name,set_name,notify=nameChanged)
 
-    #overviewChanged = QtCore.Signal()
     def get_overview(self):
         return self.overview
     def set_overview(self, overview):
         self.overview = overview
         pyotherside.send('overviewChanged', self.overview)
-    #showOverview = QtCore.Property(unicode,get_overview,set_overview,notify=overviewChanged)
 
     def get_episodes_by_season(self, season_number):
         if season_number is None:
             return self.episode_list
         return [episode for episode in self.episode_list if episode.season_number == season_number]
 
-    #@QtCore.Slot(QtCore.QObject,result=QtCore.QObject)
     def get_next_episode(self, episode):
         return self._get_episode_by_offset(episode, 1)
 
-    #@QtCore.Slot(QtCore.QObject,result=QtCore.QObject)
     def get_previous_episode(self, episode):
         return self._get_episode_by_offset(episode, -1)
 
@@ -130,9 +115,7 @@ class Show(object):
                 return episode
         return None
 
-    #@QtCore.Slot(result=QtCore.QObject)
     def get_seasons_model(self):
-        #return SortedSeasonsList(ListModel(self.get_seasons()), Settings(), self)
         season_list = []
         for season in self.get_seasons():
             season_list.append({'seasonName': self.get_season_name(season),
@@ -150,7 +133,6 @@ class Show(object):
                 seasons.append(season_number)
         return seasons
 
-    #@QtCore.Slot(unicode,result=unicode)
     def get_season_image(self, season):
         retval = constants.PLACEHOLDER_IMAGE
         if (season not in self.season_images):
@@ -163,9 +145,7 @@ class Show(object):
         return [episode for episode in self.episode_list \
                   if episode.season_number == season]
 
-    #@QtCore.Slot(unicode,result=QtCore.QObject)
     def get_sorted_episode_list_by_season(self, season):
-        #return SortedEpisodesList(ListModel(self.get_episode_list_by_season(season)), Settings(), self)
         episode_list = []
         for episode in self.get_episode_list_by_season(season):
             episode_list.append({'episodeName': episode.get_title(),
@@ -202,18 +182,15 @@ class Show(object):
                 series_manager.changed = True
                 break
 
-    #@QtCore.Slot(unicode)
     def delete_season(self, season):
         episodes = self.get_episode_list_by_season(season)
         for episode in episodes:
             self.delete_episode(episode)
         pyotherside.send('infoMarkupChanged')
 
-    #@QtCore.Slot(unicode)
     def mark_all_episodes_as_not_watched(self, season = None):
         self._mark_all_episodes(False, season)
 
-    #@QtCore.Slot(unicode)
     def mark_all_episodes_as_watched(self, season = None):
         self._mark_all_episodes(True, season)
 
@@ -224,7 +201,6 @@ class Show(object):
         SeriesManager().updated()
         pyotherside.send('infoMarkupChanged')
 
-    #@QtCore.Slot(unicode, result=bool)
     def is_completely_watched(self, season = None):
         episodes = self.get_episodes_by_season(season)
         for episode in episodes:
@@ -297,16 +273,13 @@ class Show(object):
         else:
             show_info = ''
         return show_info
-    #infoMarkup = QtCore.Property(unicode,get_info_markup,notify=infoMarkupChanged)
 
-    #@QtCore.Slot(unicode,result=unicode)
     def get_season_name(self, season):
         if season == '0':
             return _('Special')
         else:
             return _('Season %s') % season
 
-    #@QtCore.Slot(unicode,result=unicode)
     def get_season_info_markup(self, season):
         info = self.get_episodes_info(season)
         episodes = info['episodes']
@@ -407,20 +380,15 @@ class Episode(object):
     def __repr__(self):
         return self.get_title()
 
-    #ratingChanged = QtCore.Signal()
     def get_rating(self):
         try:
             return round(float(self.rating))
         except:
             return 0
-    #episodeRating = QtCore.Property(int,get_rating,notify=ratingChanged)
 
-    #titleChanged = QtCore.Signal()
     def get_title(self):
         return _('Ep. %s: %s') % (self.get_episode_show_number(), self.name)
-    #title = QtCore.Property(unicode,get_title,notify=titleChanged)
 
-    #watchedChanged = QtCore.Signal()
     def get_watched(self): return self.watched
     def set_watched(self, watched):
         if (self.watched == watched):
@@ -430,15 +398,12 @@ class Episode(object):
         pyotherside.send('infoMarkupChanged')
         series_manager = SeriesManager()
         series_manager.changed = True
-    #isWatched = QtCore.Property(bool,get_watched,set_watched,notify=watchedChanged)
 
-    #overviewChanged = QtCore.Signal()
     def get_overview(self):
         return self.overview
     def set_overview(self, overview):
         self.overview = overview
         pyotherside.send('overviewChanged', self.overview)
-    #overviewText = QtCore.Property(unicode,get_overview,set_overview,notify=overviewChanged)
 
     def __eq__(self, episode):
         if not episode:
@@ -465,7 +430,6 @@ class Episode(object):
         #self.airDateTextChanged.emit()
         #self.watchedChanged.emit()
 
-    #airDateTextChanged = QtCore.Signal()
     def get_air_date_text(self):
         if not self.air_date:
             return ''
@@ -480,9 +444,7 @@ class Episode(object):
         if self.air_date.year != datetime.today().year:
             next_air_date_str += self.air_date.strftime(' %Y')
         return next_air_date_str
-    #airDateText = QtCore.Property(unicode,get_air_date_text,notify=airDateTextChanged)
 
-    #@QtCore.Slot(result=bool)
     def already_aired(self):
         if self.air_date and self.air_date <= datetime.today().date():
             return True
@@ -551,31 +513,8 @@ class SeriesManager(object):
 
     GET_FULL_SHOW_COMPLETE_SIGNAL = 'get-full-show-complete'
     # UPDATE_SHOW_EPISODES_COMPLETE_SIGNAL = 'update-show-episodes-complete'
-    #updateShowEpisodesComplete = QtCore.Signal(QtCore.QObject)
     # UPDATE_SHOWS_CALL_COMPLETE_SIGNAL = 'update-shows-call-complete'
-    #updateShowsCallComplete = QtCore.Signal(QtCore.QObject)
     # SHOW_LIST_CHANGED_SIGNAL = 'show-list-changed'
-    #showListChanged = QtCore.Signal()
-
-   # __gsignals__ = {GET_FULL_SHOW_COMPLETE_SIGNAL: (gobject.SIGNAL_RUN_LAST,
-   #                                                 gobject.TYPE_NONE,
-   #                                                 (gobject.TYPE_PYOBJECT,
-   #                                                  gobject.TYPE_PYOBJECT)),
-   #                 UPDATE_SHOW_EPISODES_COMPLETE_SIGNAL: (gobject.SIGNAL_RUN_LAST,
-   #                                                        gobject.TYPE_NONE,
-   #                                                        (gobject.TYPE_PYOBJECT,
-   #                                                         gobject.TYPE_PYOBJECT)),
-   #                 UPDATE_SHOWS_CALL_COMPLETE_SIGNAL: (gobject.SIGNAL_RUN_LAST,
-   #                                                    gobject.TYPE_NONE,
-   #                                                    (gobject.TYPE_PYOBJECT,
-   #                                                     gobject.TYPE_PYOBJECT)),
-   #                 SHOW_LIST_CHANGED_SIGNAL: (gobject.SIGNAL_RUN_LAST,
-   #                                            gobject.TYPE_NONE,
-   #                                            ()),
-   #                 UPDATED_SHOW_ART: (gobject.SIGNAL_RUN_LAST,
-   #                                    gobject.TYPE_NONE,
-   #                                    (gobject.TYPE_PYOBJECT,)),
-   #                }
 
     _instance = None
     _instance_initialized = False
@@ -593,8 +532,6 @@ class SeriesManager(object):
             SeriesManager._instance_initialized = True
 
             self.series_list = []
-            #self.sorted_series_list = SortedSeriesList(Settings(), self)
-            #self.sorted_series_list.setSourceModel(self.series_list)
 
             self.thetvdb = thetvdbapi.TheTVDB(TVDB_API_KEY)
             self.changed = False
@@ -616,15 +553,11 @@ class SeriesManager(object):
             self.isUpdating = False
             self.isLoading = False
 
-    #loadingChanged = QtCore.Signal()
     def get_loading(self):
         return self.isLoading
-    #loading = QtCore.Property(bool,get_loading,notify=loadingChanged)
 
-    #updatingChanged = QtCore.Signal()
     def get_updating(self):
         return self.isUpdating
-    #updating = QtCore.Property(bool,get_updating,notify=updatingChanged)
 
     def update_languages(self):
         self.languages = self.thetvdb.get_available_languages()
@@ -669,12 +602,8 @@ class SeriesManager(object):
         save_file.write(serialized)
         save_file.close()
 
-    #searchingChanged = QtCore.Signal()
     def get_searching(self): return self.searching
-    #isSearching = QtCore.Property(bool,get_searching,notify=searchingChanged)
 
-    #@QtCore.Slot(unicode)
-    #@QtCore.Slot(unicode,unicode)
     def search_shows(self, terms, language = "en"):
         if not terms:
             return []
@@ -688,7 +617,6 @@ class SeriesManager(object):
         async_worker.queue.put(async_item)
         async_worker.start()
 
-    #@QtCore.Slot(result=QtCore.QObject)
     def search_result_model(self):
         search_results_list = []
         for item in self.search_results:
@@ -703,7 +631,6 @@ class SeriesManager(object):
         self.searching = False
         pyotherside.send('searching', self.searching)
 
-    #@QtCore.Slot(QtCore.QObject)
     def update_show_episodes(self, show):
         return self.update_all_shows_episodes([show])
 
@@ -711,7 +638,6 @@ class SeriesManager(object):
         show = self.get_show_by_name(show_name)
         return self.update_all_shows_episodes([show])
 
-    #@QtCore.Slot()
     def update_all_shows_episodes(self, show_list = []):
         self.isUpdating = True
         pyotherside.send('updating', self.isUpdating)
@@ -756,7 +682,6 @@ class SeriesManager(object):
         for show_id, show in tvdbshows:
             pass
 
-    #@QtCore.Slot(unicode)
     def get_complete_show(self, show_name, language = "en"):
         self.isUpdating = True
         pyotherside.send('updating', self.isUpdating)
@@ -874,7 +799,6 @@ class SeriesManager(object):
         self.changed = True
         self.emit(self.SHOW_LIST_CHANGED_SIGNAL)
 
-    #@QtCore.Slot(QtCore.QObject)
     def delete_show(self, show):
         for i in range(len(self.series_list)):
             if self.series_list[i] == show:
@@ -929,21 +853,18 @@ class SeriesManager(object):
             if image_type  == 'poster' and \
                (not show.image or not os.path.isfile(show.image)):
                 show.downloading_show_image = True
-                #self.emit(self.UPDATED_SHOW_ART, show) #TODO
                 pyotherside.send('showArtChanged')
                 target_file = os.path.join(DATA_DIR, show.get_poster_prefix())
                 image_file = os.path.abspath(image_downloader(url, target_file))
                 show.set_cover_image(image_file)
                 show.downloading_show_image = False
                 self.changed = True
-                #self.emit(self.UPDATED_SHOW_ART, show) #TODO
                 pyotherside.send('showArtChanged')
             elif image_type == 'season':
                 season = image[3]
                 if season in seasons and \
                    season not in show.season_images.keys():
                     show.downloading_season_image = True
-                    #self.emit(self.UPDATED_SHOW_ART, show) #TODO
                     pyotherside.send('showArtChanged')
                     target_file = os.path.join(DATA_DIR,
                                                show.get_season_poster_prefix(season))
@@ -956,7 +877,6 @@ class SeriesManager(object):
                         show.season_images[season] = image_file
                     show.downloading_season_image = False
                     self.changed = True
-                    #self.emit(self.UPDATED_SHOW_ART, show) #TODO
                     pyotherside.send('showArtChanged')
             if show.image and len(show.season_images) == len(seasons):
                 break
