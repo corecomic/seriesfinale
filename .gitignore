@@ -4,3 +4,6 @@ dist/
 __pycache__
 rpm/*.rpm
 TODO
+*~
+Makefile
+MANIFEST
