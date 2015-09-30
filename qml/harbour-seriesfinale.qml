@@ -10,6 +10,9 @@ ApplicationWindow
     initialPage: Component { id: seriesPage; SeriesPage {} }
     cover: Component { id: coverPage; CoverPage {} }
 
+    allowedOrientations: Orientation.All
+    _defaultPageOrientations: Orientation.All
+
     property string coverImage: 'seriesfinale_cover.png'
 
     Python {

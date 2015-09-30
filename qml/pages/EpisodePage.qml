@@ -16,7 +16,7 @@ Page {
         id: dataItem
         anchors.top: header.bottom
         anchors.left: parent.left
-        width: parent.width
+        width: episodePage.isPortrait ? parent.width : grid.width + Theme.paddingLarge
         anchors.margins: Theme.paddingLarge
         height: grid.height
 
@@ -50,15 +50,15 @@ Page {
 
     Item {
         id: overviewItem
-        anchors.top: dataItem.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: watched.top
+        anchors.top: episodePage.isPortrait ? dataItem.bottom : header.bottom
+        anchors.left: episodePage.isPortrait ? parent.left : dataItem.right
+        anchors.right: episodePage.isPortrait ? parent.right : parent.right
+        anchors.bottom: episodePage.isPortrait ? watched.top : parent.bottom
         anchors.margins: Theme.paddingLarge
 
         Flickable {
             id: flickableText
-            height: parent.height - watched.height - 10
+            height: parent.height
             width: parent.width
             contentHeight: text.height + overviewTitle.height + 10
             clip: true
