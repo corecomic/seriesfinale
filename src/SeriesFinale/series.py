@@ -683,6 +683,10 @@ class SeriesManager(object):
             pass
 
     def get_complete_show(self, show_name, language = "en"):
+        # Test if the show has already been added.
+        for show in self.series_list:
+            if show.name == show_name:
+                return # TODO notification
         self.isUpdating = True
         pyotherside.send('updating', self.isUpdating)
         show_id = self._cached_tvdb_shows.get(show_name, None)
