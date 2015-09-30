@@ -26,7 +26,10 @@ class Settings(object):
 
     ASCENDING_ORDER = 0
     DESCENDING_ORDER = 1
+
+    ALPHABETIC_ORDER = 0
     RECENT_EPISODE = 1
+    LAST_AIRED_EPISODE = 2
 
     AUTOMATIC = 0
     PORTRAIT = 1

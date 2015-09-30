@@ -59,7 +59,8 @@ Dialog {
                 menu: ContextMenu {
                     id: showSortingMenu
                     MenuItem { text: "By title"; }
-                    MenuItem { text: "By episode date"; }
+                    MenuItem { text: "By next episode date"; }
+                    MenuItem { text: "By last aired episode"; }
                 }
             }
 

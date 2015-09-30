@@ -64,6 +64,12 @@ def SortedSeriesList(series_list, settings):
             return sorted(series_list, key=lambda k: k['nextToWatch']
                 if (k and k['nextToWatch'])
                 else datetime.max.date())
+        elif sortOrder == settings.LAST_AIRED_EPISODE:
+            return sorted(series_list, key=lambda k: k['lastAired']
+                if (k and k['lastAired'])
+                else datetime.min.date(), reverse=True)
+        elif sortOrder == settings.ALPHABETIC_ORDER:
+            return sorted(series_list, key=lambda k: k['showName'])
         else:
             return series_list
 
