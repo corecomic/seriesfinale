@@ -60,6 +60,11 @@ class SettingsWrapper():
     def setShowsSort(self, newOrder):
         Settings().setConf(Settings.SHOWS_SORT, newOrder)
 
+    def getSearchLanguage(self):
+        return Settings().getConf(Settings.SEARCH_LANGUAGE)
+    def setSearchLanguage(self, language):
+        Settings().setConf(Settings.SEARCH_LANGUAGE, language)
+
 class SeriesFinale:
     def __init__(self):
         self.series_manager = SeriesManager()

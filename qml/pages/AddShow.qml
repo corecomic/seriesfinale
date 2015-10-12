@@ -5,12 +5,21 @@ Page {
     id: searchPage
 
     property bool isSearching: false
+    property string searchLanguage: 'en'
 
     Component.onCompleted: searchField.forceActiveFocus()
 
+    onStatusChanged: {
+        if (status === PageStatus.Activating) {
+            python.call('seriesfinale.seriesfinale.settingsWrapper.getSearchLanguage', [], function(result) {
+                searchLanguage = result;
+            })
+        }
+    }
+
     function search() {
         parent.focus = true //Make sure the keyboard closes and the text is updated
-        python.call('seriesfinale.seriesfinale.series_manager.search_shows', [searchField.text], function() {});
+        python.call('seriesfinale.seriesfinale.series_manager.search_shows', [searchField.text, searchLanguage], function() {});
     }
 
     Connections {
@@ -37,12 +46,12 @@ Page {
 
         VerticalScrollDecorator {}
 
-//        PullDownMenu {
-//            MenuItem {
-//                text: qsTr("Browse")
-//                onClicked: pageStack.push(Qt.resolvedUrl("Browser.qml"))
-//            }
-//        }
+        PullDownMenu {
+            MenuItem {
+                text: 'Search options'
+                onClicked: pageStack.push(Qt.resolvedUrl("SearchSettingsPage.qml"), {language: searchLanguage})
+            }
+        }
 
 
         Column {
@@ -91,7 +100,7 @@ Page {
                         truncationMode: TruncationMode.Fade
                     }
                     onClicked: {
-                        python.call('seriesfinale.seriesfinale.series_manager.get_complete_show', [model.data], function() {});
+                        python.call('seriesfinale.seriesfinale.series_manager.get_complete_show', [model.data, searchLanguage], function() {});
                         pageStack.pop()
                     }
                 }
