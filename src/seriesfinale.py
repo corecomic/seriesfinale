@@ -102,8 +102,8 @@ class SeriesFinale:
         async_worker.queue.put(save_shows_item)
         async_worker.queue.put(save_conf_item)
         async_worker.start()
-        # FIXME: Wait a little while for the saving to complete.
-        time.sleep(1)
+        # Wait for the saving thread to complete.
+        async_worker.join()
 
     def saveSettings(self):
         self.settings.save(constants.SF_CONF_FILE)

@@ -59,7 +59,7 @@ class AsyncWorker(Thread):
         self.stopped = False
         self.async_item = None
         self.item_number = -1
-        self.setDaemon(interrumpible)
+        self.deamon = interrumpible
 
     def run(self):
         while not self.stopped:

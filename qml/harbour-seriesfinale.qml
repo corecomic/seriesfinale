@@ -15,6 +15,13 @@ ApplicationWindow
 
     property string coverImage: 'seriesfinale_cover.png'
 
+    Component.onDestruction: {
+        // for some reason the PyOtherSide atexit handler does not
+        // work on Sailfish OS, so we use this
+
+        python.call('seriesfinale.seriesfinale.closeEvent()', [])
+    }
+
     Python {
         id: python
 
@@ -71,14 +78,7 @@ ApplicationWindow
             // asychronous messages from Python arrive here
             // in Python, this can be accomplished via pyotherside.send()
             console.log('got message from python: ' + data);
-        }
-
-        Component.onDestruction: {
-            // for some reason the PyOtherSide atexit handler does not
-            // work on Sailfish OS, so we use this
-
-            python.call('seriesfinale.seriesfinale.closeEvent()', [])
-        }
+        }       
     }
 }
 
