@@ -38,6 +38,7 @@ class Settings(object):
     EPISODES_ORDER_CONF_NAME = 'episodes_order'
     SEASONS_ORDER_CONF_NAME = 'seasons_order'
     SHOWS_SORT = 'shows_sort'
+    SHOWS_SORT_BY_GENRE = 'sort_by_genre'
     SCREEN_ROTATION = 'screen_rotation'
     ADD_SPECIAL_SEASONS = 'add_special_seasons'
     EPISODES_CHECK_POSITION = 'episodes_check_position'
@@ -50,6 +51,7 @@ class Settings(object):
     TYPES = {EPISODES_ORDER_CONF_NAME: int,
              SEASONS_ORDER_CONF_NAME: int,
              SHOWS_SORT: int,
+             SHOWS_SORT_BY_GENRE: bool,
              SCREEN_ROTATION: int,
              ADD_SPECIAL_SEASONS: bool,
              EPISODES_CHECK_POSITION: int,
@@ -58,6 +60,7 @@ class Settings(object):
     DEFAULTS = {EPISODES_ORDER_CONF_NAME: DESCENDING_ORDER,
                 SEASONS_ORDER_CONF_NAME: ASCENDING_ORDER,
                 SHOWS_SORT: RECENT_EPISODE,
+                SHOWS_SORT_BY_GENRE: False,
                 SCREEN_ROTATION: AUTOMATIC,
                 ADD_SPECIAL_SEASONS: True,
                 EPISODES_CHECK_POSITION: RIGHT,

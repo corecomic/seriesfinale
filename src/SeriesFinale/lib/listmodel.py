@@ -58,20 +58,28 @@ class ListModel():
 
 def SortedSeriesList(series_list, settings):
         sortOrder = settings.getConf(settings.SHOWS_SORT)
+        sortByGenre = settings.getConf(settings.SHOWS_SORT_BY_GENRE)
         hideCompleted = settings.getConf(settings.HIDE_COMPLETED_SHOWS)
 
+        sorted_list = series_list
+
         if sortOrder == settings.RECENT_EPISODE:
-            return sorted(series_list, key=lambda k: k['nextToWatch']
+            sorted_list = sorted(series_list, key=lambda k: k['nextToWatch']
                 if (k and k['nextToWatch'])
                 else datetime.max.date())
         elif sortOrder == settings.LAST_AIRED_EPISODE:
-            return sorted(series_list, key=lambda k: k['lastAired']
+            sorted_list = sorted(series_list, key=lambda k: k['lastAired']
                 if (k and k['lastAired'])
                 else datetime.min.date(), reverse=True)
         elif sortOrder == settings.ALPHABETIC_ORDER:
-            return sorted(series_list, key=lambda k: k['showName'])
+            sorted_list = sorted(series_list, key=lambda k: k['showName'])
         else:
-            return series_list
+            sorted_list = series_list
+
+        if sortByGenre:
+            sorted_list = sorted(sorted_list, key=lambda k: k['showGenre'])
+
+        return sorted_list
 
 
 def SortedSeasonsList(season_list, settings):

@@ -750,6 +750,7 @@ class SeriesManager(object):
         for show in self.series_list:
             series_list.append({'showName': show.get_name(),
                                 'showOverview': show.get_overview(),
+                                'showGenre': show.genre[0],
                                 'infoMarkup': show.get_info_markup(),
                                 'coverImage': show.cover_image(),
                                 'lastAired': show.get_most_recent_air_date(),

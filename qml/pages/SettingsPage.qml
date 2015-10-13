@@ -7,6 +7,7 @@ Dialog {
 
     onAccepted: {
         python.call('seriesfinale.seriesfinale.settingsWrapper.setShowsSort', [showSorting.currentIndex])
+        python.call('seriesfinale.seriesfinale.settingsWrapper.setSortByGenre', [sortByGenreSwitch.checked])
         python.call('seriesfinale.seriesfinale.settingsWrapper.setSeasonsOrder', [seasonSorting.currentIndex])
         python.call('seriesfinale.seriesfinale.settingsWrapper.setEpisodesOrder', [episodeSorting.currentIndex])
         python.call('seriesfinale.seriesfinale.settingsWrapper.setAddSpecialSeasons', [specialSeasonsSwitch.checked])
@@ -16,6 +17,9 @@ Dialog {
     Component.onCompleted: {
         python.call('seriesfinale.seriesfinale.settingsWrapper.getShowsSort', [], function(result) {
             showSorting.currentIndex = result;
+        })
+        python.call('seriesfinale.seriesfinale.settingsWrapper.getSortByGenre', [], function(result) {
+            sortByGenreSwitch.checked = result;
         })
         python.call('seriesfinale.seriesfinale.settingsWrapper.getSeasonsOrder', [], function(result) {
             seasonSorting.currentIndex = result;
@@ -82,6 +86,11 @@ Dialog {
                     MenuItem { text: "1-9"; }
                     MenuItem { text: "9-1"; }
                 }
+            }
+
+            TextSwitch {
+                id: sortByGenreSwitch
+                text: qsTr("Sort by genre")
             }
 
             SectionHeader {

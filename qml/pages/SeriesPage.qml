@@ -25,6 +25,14 @@ Page {
             hasChanged = false;
             coverImage = seriesList.get(getRandomNumber(0, result.length)).coverImage;
         });
+
+        python.call('seriesfinale.seriesfinale.settingsWrapper.getSortByGenre', [], function(result) {
+            if (result) {
+                listView.section.property = "showGenre"
+            } else {
+                listView.section.property = ""
+            }
+        })
     }
 
     onStatusChanged: {
@@ -95,6 +103,12 @@ Page {
 
         model: ListModel {
             id: seriesList
+        }
+
+        section.property: ""
+        section.criteria: ViewSection.FullString
+        section.delegate: SectionHeader {
+            text: section
         }
 
         delegate: ListRowDelegate {

@@ -60,6 +60,11 @@ class SettingsWrapper():
     def setShowsSort(self, newOrder):
         Settings().setConf(Settings.SHOWS_SORT, newOrder)
 
+    def getSortByGenre(self):
+        return Settings().getConf(Settings.SHOWS_SORT_BY_GENRE)
+    def setSortByGenre(self, add):
+        Settings().setConf(Settings.SHOWS_SORT_BY_GENRE, add)
+
     def getSearchLanguage(self):
         return Settings().getConf(Settings.SEARCH_LANGUAGE)
     def setSearchLanguage(self, language):
