@@ -7,6 +7,10 @@
 
 # * date Author's Name <author's email> version-release
 # - Summary of changes
+* Wed Oct 14 2015 Core Comic <core.comic@gmail.com> 1.1.0-1
+- Fix saving at exit
+- Add ability to search/add shows in different languages
+- Allow sorting by genre
 
 * Wed Oct 07 2015 Core Comic <core.comic@gmail.com> 1.0.0-1
 - Initial release for Sailfish OS
