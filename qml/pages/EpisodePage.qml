@@ -18,6 +18,8 @@ Page {
         anchors.left: parent.left
         width: episodePage.isPortrait ? parent.width : grid.width + Theme.paddingLarge
         anchors.margins: Theme.paddingLarge
+        anchors.leftMargin: Theme.horizontalPageMargin
+        anchors.rightMargin: Theme.horizontalPageMargin
         height: grid.height
 
         Grid {
@@ -55,6 +57,8 @@ Page {
         anchors.right: episodePage.isPortrait ? parent.right : parent.right
         anchors.bottom: episodePage.isPortrait ? watched.top : parent.bottom
         anchors.margins: Theme.paddingLarge
+        anchors.leftMargin: Theme.horizontalPageMargin
+        anchors.rightMargin: Theme.horizontalPageMargin
 
         Flickable {
             id: flickableText
@@ -101,7 +105,7 @@ Page {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: Theme.paddingLarge
         anchors.left: parent.left
-        anchors.leftMargin: Theme.paddingLarge
+        anchors.leftMargin: Theme.horizontalPageMargin
         text: "Watched"
         onCheckedChanged: {
             python.call('seriesfinale.seriesfinale.series_manager.set_episode_watched', [checked, show.showName, episode.episodeName])

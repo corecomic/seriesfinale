@@ -12,7 +12,8 @@ BackgroundItem {
 
     Row {
         anchors.fill: parent
-        anchors.rightMargin: Theme.paddingLarge
+        anchors.leftMargin: Theme.horizontalPageMargin
+        anchors.rightMargin: Theme.horizontalPageMargin
 
         Switch {
             id: markItem

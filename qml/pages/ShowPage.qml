@@ -58,9 +58,11 @@ Page {
         SilicaFlickable {
             id: content
             anchors.fill: parent
+            leftMargin: Theme.horizontalPageMargin
+            rightMargin: Theme.horizontalPageMargin
 
             contentWidth: grid.width
-            contentHeight:  grid.height
+            contentHeight: grid.height
 
             VerticalScrollDecorator { flickable: flickable }
 
@@ -86,7 +88,7 @@ Page {
                 Text {
                     id: showInfoDescription
                     anchors.horizontalCenter: parent.horizontalCenter
-                    width: parent.width - 2*Theme.paddingLarge
+                    width: parent.width - 2*Theme.horizontalPageMargin
                     text: show.showOverview
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.secondaryColor
