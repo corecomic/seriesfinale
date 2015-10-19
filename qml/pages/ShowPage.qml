@@ -160,7 +160,7 @@ Page {
             function showRemorseItem() {
                 remorse.execute(listDelegate, "Deleting", function() {
                     python.call('seriesfinale.seriesfinale.series_manager.delete_season', [showPage.show.showName, model.seasonNumber]);
-                    showPage.update();
+                    seasonList.remove(index);
                 })
             }
 

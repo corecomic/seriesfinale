@@ -136,7 +136,7 @@ Page {
             function showRemorseItem() {
                 remorse.execute(listDelegate, "Deleting", function() {
                     python.call('seriesfinale.seriesfinale.series_manager.delete_show_by_name', [model.showName]);
-                    seriesPage.update();
+                    seriesList.remove(index);
                 })
             }
 
