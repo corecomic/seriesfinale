@@ -126,6 +126,15 @@ Page {
                 id: contextMenu
                 ContextMenu {
                     MenuItem {
+                        id: markAllItem
+                        visible: !model.isWatched
+                        text: 'Mark show as watched'
+                        onClicked: {
+                            python.call('seriesfinale.seriesfinale.series_manager.mark_all_episodes_watched', [true, model.showName])
+                            seriesPage.update()
+                        }
+                    }
+                    MenuItem {
                         text: "Delete show";
                         onClicked: showRemorseItem()
                     }
