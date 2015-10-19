@@ -135,15 +135,15 @@ class TheTVDB(object):
                     if gd["ampm"].lower() == "p":
                         hour += 12
 
-                    return datetime.time(hour, int(gd["minute"]))
+                    return datetime.time(hour%24, int(gd["minute"]))
                 elif "hour" in gd and "ampm" in gd:
                     hour = int(gd["hour"])
                     if gd["ampm"].lower() == "p":
                         hour += 12
 
-                    return datetime.time(hour, 0)
+                    return datetime.time(hour%24, 0)
                 elif "hour" in gd and "minute" in gd:
-                    return datetime.time(int(gd["hour"]), int(gd["minute"]))
+                    return datetime.time(int(gd["hour"])%24, int(gd["minute"]))
 
         return None
 
