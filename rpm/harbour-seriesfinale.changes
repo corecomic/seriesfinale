@@ -7,6 +7,11 @@
 
 # * date Author's Name <author's email> version-release
 # - Summary of changes
+* Tue Oct 20 2015 Core Comic <core.comic@gmail.com> 1.1.1-1
+- Fix deleting multiple shows/seasons while remorse timer is active
+- Fix adding shows which have no genre specified
+- Allow to mark complete shows as watched
+
 * Wed Oct 14 2015 Core Comic <core.comic@gmail.com> 1.1.0-1
 - Fix saving at exit
 - Add ability to search/add shows in different languages
