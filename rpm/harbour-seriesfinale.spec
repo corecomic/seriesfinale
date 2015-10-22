@@ -10,6 +10,7 @@ License:    GPLv3
 URL:        https://github.com/corecomic/seriesfinale
 Source0:    %{name}-%{version}.tar.gz
 BuildArch:  noarch
+Requires:   libsailfishapp-launcher
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   pyotherside-qml-plugin-python3-qt5 >= 1.3.0
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2
@@ -53,9 +54,9 @@ TARGET=%{buildroot}/%{_datadir}/applications
 mkdir -p $TARGET
 cp -rpv %{name}.desktop $TARGET/
 
-TARGET=%{buildroot}/%{_datadir}/icons/hicolor/86x86/apps/
+TARGET=%{buildroot}/%{_datadir}/icons/hicolor/
 mkdir -p $TARGET
-cp -rpv %{name}.png $TARGET/
+cp -rpv icons/* $TARGET/
 
 # >> install post
 # << install post
@@ -69,6 +70,9 @@ desktop-file-install --delete-original       \
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
+%{_datadir}/icons/hicolor/108x108/apps/%{name}.png
+%{_datadir}/icons/hicolor/128x128/apps/%{name}.png
+%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
 # >> files
 # << files
 
