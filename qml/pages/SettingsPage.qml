@@ -38,7 +38,7 @@ Dialog {
         anchors.fill: parent
 
         contentWidth: grid.width
-        contentHeight:  grid.height
+        contentHeight: grid.height
 
         VerticalScrollDecorator { flickable: flickable }
 

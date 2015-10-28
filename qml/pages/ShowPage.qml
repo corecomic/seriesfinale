@@ -58,8 +58,6 @@ Page {
         SilicaFlickable {
             id: content
             anchors.fill: parent
-            leftMargin: Theme.horizontalPageMargin
-            rightMargin: Theme.horizontalPageMargin
 
             contentWidth: grid.width
             contentHeight: grid.height

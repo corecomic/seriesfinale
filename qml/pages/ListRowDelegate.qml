@@ -3,7 +3,7 @@ import Sailfish.Silica 1.0
 
 ListItem {
     id: listItem
-    contentHeight: Theme.itemSizeLarge
+    contentHeight: Screen.sizeCategory >= Screen.Large ? Theme.itemSizeExtraLarge : Theme.itemSizeLarge
 
     menu: contextMenu
 
@@ -13,14 +13,13 @@ ListItem {
 
     Row {
         anchors.fill: parent
-        anchors.leftMargin: Theme.horizontalPageMargin
-        anchors.rightMargin: Theme.horizontalPageMargin
-        spacing: Theme.paddingMedium
+        anchors.leftMargin: Screen.sizeCategory >= Screen.Large ? Theme.horizontalPageMargin : Theme.paddingSmall
+        spacing: Theme.paddingSmall
 
         Image {
             id: icon
             anchors.verticalCenter: parent.verticalCenter
-            height: listItem.contentHeight - 5
+            height: listItem.contentHeight - 6
             width: height
             fillMode: "PreserveAspectFit"
             smooth: true
@@ -32,7 +31,7 @@ ListItem {
         Column {
             id: column
             anchors.verticalCenter: parent.verticalCenter
-            width: parent.width - icon.width - Theme.paddingMedium
+            width: parent.width - icon.width - Theme.horizontalPageMargin
 
             Label {
                 id: title

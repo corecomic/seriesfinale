@@ -3,6 +3,7 @@ import Sailfish.Silica 1.0
 
 BackgroundItem {
     id: epListItem
+    width: ListView.view.width
     contentHeight: Theme.itemSizeSmall
 
     signal watchToggled(bool watched)
@@ -12,8 +13,6 @@ BackgroundItem {
 
     Row {
         anchors.fill: parent
-        anchors.leftMargin: Theme.horizontalPageMargin
-        anchors.rightMargin: Theme.horizontalPageMargin
 
         Switch {
             id: markItem
@@ -28,7 +27,7 @@ BackgroundItem {
         Column {
             id: column
             anchors.verticalCenter: parent.verticalCenter
-            width: parent.width - markItem.width
+            width: parent.width - markItem.width - Theme.horizontalPageMargin
 
             Label {
                 id: title
