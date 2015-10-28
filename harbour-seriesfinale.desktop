@@ -2,5 +2,5 @@
 Type=Application
 X-Nemo-Application-Type=silica-qt5
 Icon=harbour-seriesfinale
-Exec=harbour-seriesfinale
+Exec=sailfish-qml harbour-seriesfinale
 Name=SeriesFinale
