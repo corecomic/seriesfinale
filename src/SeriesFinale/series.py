@@ -122,7 +122,7 @@ class Show(object):
                                 'seasonNumber': season,
                                 'seasonInfoMarkup': self.get_season_info_markup(season),
                                 'seasonImage': self.get_season_image(season),
-                                'isWatched': self.is_completely_watched(season)})
+                                'isWatched': self.is_completely_watched(season, only_aired = True)})
         return SortedSeasonsList(season_list, Settings())
 
     def get_seasons(self):
@@ -202,10 +202,10 @@ class Show(object):
         SeriesManager().updated()
         pyotherside.send('infoMarkupChanged')
 
-    def is_completely_watched(self, season = None):
+    def is_completely_watched(self, season = None, only_aired = False):
         episodes = self.get_episodes_by_season(season)
         for episode in episodes:
-            if episode.already_aired():
+            if not only_aired or episode.already_aired():
                 if not episode.watched:
                     return False
         return True
@@ -757,7 +757,7 @@ class SeriesManager(object):
                                 'coverImage': show.cover_image(),
                                 'lastAired': show.get_most_recent_air_date(),
                                 'nextToWatch': show.get_next_unwatched_air_date(),
-                                'isWatched': show.is_completely_watched()})
+                                'isWatched': show.is_completely_watched(only_aired = True)})
         return SortedSeriesList(series_list, Settings())
 
     def get_seasons_list(self, show_name):
