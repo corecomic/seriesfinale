@@ -21,21 +21,6 @@ CoverBackground {
         font.pixelSize: Theme.fontSizeLarge
         color: Theme.highlightColor
     }
-
-    CoverActionList {
-        id: coverAction
-        enabled: false
-
-        CoverAction {
-            iconSource: "image://theme/icon-cover-next"
-            onTriggered: {}
-        }
-
-        CoverAction {
-            iconSource: "image://theme/icon-cover-pause"
-            onTriggered: {}
-        }
-    }
 }
 
 

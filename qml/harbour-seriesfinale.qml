@@ -4,6 +4,7 @@ import "pages"
 import "cover"
 
 import io.thp.pyotherside 1.3
+import org.nemomobile.notifications 1.0
 
 ApplicationWindow
 {
@@ -20,6 +21,14 @@ ApplicationWindow
         // work on Sailfish OS, so we use this
 
         python.call('seriesfinale.seriesfinale.closeEvent()', [])
+    }
+
+    Notification {
+        id: notification
+        appName: "SeriesFinale"
+        summary: ""
+        previewSummary: summary
+        expireTimeout: 1
     }
 
     Python {
@@ -47,6 +56,10 @@ ApplicationWindow
 
             setHandler('finished', function(newvalue) {
                 console.log('Finished..: ', newvalue)
+            });
+            setHandler('notification', function(note) {
+                notification.summary = note;
+                notification.publish();
             });
             setHandler('searching', python.searchingChanged);
             setHandler('updating', python.updatingChanged);

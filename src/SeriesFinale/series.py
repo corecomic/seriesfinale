@@ -693,7 +693,8 @@ class SeriesManager(object):
         # Test if the show has already been added.
         for show in self.series_list:
             if show.name == show_name:
-                return # TODO notification
+                pyotherside.send('notification', 'Show already in library')
+                return
         self.isUpdating = True
         pyotherside.send('updating', self.isUpdating)
         show_id = self._cached_tvdb_shows.get(show_name, None)
