@@ -42,6 +42,7 @@ class Show(object):
     def __init__(self, name, genre = None, overview = None, network = None,
                  rating = None, actors = [], episode_list = [], image = None,
                  thetvdb_id = -1, season_images = {}, id = -1, language = None,
+                 status = None,
                  downloading_show_image = False, downloading_season_image = False):
         self.id = id
         self.name = name
@@ -55,6 +56,7 @@ class Show(object):
         self.season_images = season_images
         self.thetvdb_id = thetvdb_id
         self.language = language
+        self.status = status
         self.downloading_show_image = False
         self.downloading_season_image = downloading_season_image
         self._updating = False
@@ -254,6 +256,8 @@ class Show(object):
                          % seasons
             if self.is_completely_watched():
                 show_info += '<br/>' + _('Completely watched')
+                if self.status and self.status == 'Ended':
+                    show_info += '<br/>' + _('Show has ended')
             else:
                 if episodes_to_watch:
                     n_episodes_to_watch = len(episodes_to_watch)
@@ -665,6 +669,7 @@ class SeriesManager(object):
 
     def _set_show_episodes_complete_cb(self, show, images_worker, last_call, tvdbcompleteshow, error):
         if not error and tvdbcompleteshow:
+            show = self._update_show_from_thetvdbshow(show, tvdbcompleteshow[0])
             episode_list = list([self._convert_thetvdbepisode_to_episode(tvdb_ep,show) \
                             for tvdb_ep in tvdbcompleteshow[1]])
             show.update_episode_list(episode_list)
@@ -780,6 +785,7 @@ class SeriesManager(object):
     def _convert_thetvdbshow_to_show(self, thetvdb_show):
         show_obj = Show(thetvdb_show.name, season_images = {})
         show_obj.language = thetvdb_show.language
+        show_obj.status = thetvdb_show.status
         show_obj.genre = thetvdb_show.genre
         show_obj.set_overview(thetvdb_show.overview)
         show_obj.network = thetvdb_show.network
@@ -799,6 +805,17 @@ class SeriesManager(object):
         episode_obj.writer = thetvdb_episode.writer
         episode_obj.air_date = thetvdb_episode.first_aired or ''
         return episode_obj
+
+    def _update_show_from_thetvdbshow(self, show_obj, thetvdb_show):
+        show_obj.language = thetvdb_show.language
+        show_obj.status = thetvdb_show.status
+        show_obj.genre = thetvdb_show.genre
+        show_obj.set_overview(thetvdb_show.overview)
+        show_obj.network = thetvdb_show.network
+        show_obj.rating = thetvdb_show.rating
+        show_obj.actors = thetvdb_show.actors
+        show_obj.thetvdb_id = thetvdb_show.id
+        return show_obj
 
     def add_show(self, show):
         if show.id == -1:
