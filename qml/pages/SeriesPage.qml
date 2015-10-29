@@ -126,6 +126,15 @@ Page {
                 id: contextMenu
                 ContextMenu {
                     MenuItem {
+                        id: markNextItem
+                        visible: !model.isWatched
+                        text: 'Mark next episode'
+                        onClicked: {
+                            python.call('seriesfinale.seriesfinale.series_manager.mark_next_episode_watched', [true, model.showName])
+                            seriesPage.update()
+                        }
+                    }
+                    MenuItem {
                         id: markAllItem
                         visible: !model.isWatched
                         text: 'Mark show as watched'

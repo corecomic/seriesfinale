@@ -782,6 +782,13 @@ class SeriesManager(object):
         show = self.get_show_by_name(show_name)
         show._mark_all_episodes(watched, season)
 
+    def mark_next_episode_watched(self, watched, show_name, season=None):
+        show = self.get_show_by_name(show_name)
+        episodes_info = show.get_episodes_info()
+        next_episode = episodes_info['next_episode']
+        if next_episode:
+            next_episode.set_watched(watched)
+
     def _convert_thetvdbshow_to_show(self, thetvdb_show):
         show_obj = Show(thetvdb_show.name, season_images = {})
         show_obj.language = thetvdb_show.language
