@@ -42,7 +42,7 @@ class Show(object):
     def __init__(self, name, genre = None, overview = None, network = None,
                  rating = None, actors = [], episode_list = [], image = None,
                  thetvdb_id = -1, season_images = {}, id = -1, language = None,
-                 status = None,
+                 status = None, airs_time = None, runtime = None,
                  downloading_show_image = False, downloading_season_image = False):
         self.id = id
         self.name = name
@@ -57,6 +57,8 @@ class Show(object):
         self.thetvdb_id = thetvdb_id
         self.language = language
         self.status = status
+        self.runtime = runtime
+        self.airs_time = airs_time
         self.downloading_show_image = False
         self.downloading_season_image = downloading_season_image
         self._updating = False
@@ -65,6 +67,9 @@ class Show(object):
         return {'showName': self.get_name(),
                 'showOverview': self.get_overview(),
                 'showGenre': self.genre[0] if self.genre else 'Other',
+                'showNetwork': self.network,
+                'runtime': int(self.runtime) if self.runtime else 60,
+                'airsTime': self.airs_time,
                 'infoMarkup': self.get_info_markup(),
                 'coverImage': self.cover_image(),
                 'lastAired': self.get_most_recent_air_date(),
@@ -161,13 +166,7 @@ class Show(object):
     def get_sorted_episode_list_by_season(self, season):
         episode_list = []
         for episode in self.get_episode_list_by_season(season):
-            episode_list.append({'episodeName': episode.get_title(),
-                                 'episodeNumber': episode._get_episode_number(),
-                                 'airDate': episode.get_air_date_text(),
-                                 'isWatched': episode.get_watched(),
-                                 'hasAired': episode.already_aired(),
-                                 'episodeRating': episode.get_rating(),
-                                 'overviewText': episode.get_overview()})
+            episode_list.append(episode.get_dict())
         return SortedEpisodesList(episode_list, Settings())
 
     def update_episode_list(self, episode_list):
@@ -396,6 +395,16 @@ class Episode(object):
 
     def __repr__(self):
         return self.get_title()
+
+    def get_dict(self):
+        return {'episodeName': self.get_title(),
+                'episodeNumber': self._get_episode_number(),
+                'airDate': self.get_air_date_text(),
+                'airDateFormat': self.air_date,
+                'isWatched': self.get_watched(),
+                'hasAired': self.already_aired(),
+                'episodeRating': self.get_rating(),
+                'overviewText': self.get_overview()}
 
     def get_rating(self):
         try:
@@ -778,6 +787,16 @@ class SeriesManager(object):
         show = self.get_show_by_name(show_name)
         return show.get_sorted_episode_list_by_season(season)
 
+    def get_upcoming_episodes_list(self, show_name, season=None):
+        episode_list = []
+        show = self.get_show_by_name(show_name)
+        episodes = show.get_episodes_by_season(season)
+        for episode in episodes:
+            if not episode.already_aired():
+                if not episode.watched:
+                    episode_list.append(episode.get_dict())
+        return episode_list
+
     def set_episode_watched(self, watched, show_name, episode_name):
         show = self.get_show_by_name(show_name)
         episode = show._get_episode_by_name(episode_name)
@@ -798,6 +817,8 @@ class SeriesManager(object):
         show_obj = Show(thetvdb_show.name, season_images = {})
         show_obj.language = thetvdb_show.language
         show_obj.status = thetvdb_show.status
+        show_obj.runtime = thetvdb_show.runtime
+        show_obj.airs_time = thetvdb_show.airs_time
         show_obj.genre = thetvdb_show.genre
         show_obj.set_overview(thetvdb_show.overview)
         show_obj.network = thetvdb_show.network
@@ -821,6 +842,8 @@ class SeriesManager(object):
     def _update_show_from_thetvdbshow(self, show_obj, thetvdb_show):
         show_obj.language = thetvdb_show.language
         show_obj.status = thetvdb_show.status
+        show_obj.runtime = thetvdb_show.runtime
+        show_obj.airs_time = thetvdb_show.airs_time
         show_obj.genre = thetvdb_show.genre
         show_obj.set_overview(thetvdb_show.overview)
         show_obj.network = thetvdb_show.network

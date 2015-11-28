@@ -40,6 +40,11 @@ class ShowDecoder(json.JSONEncoder):
         del show_json['downloading_show_image']
         episode_list = show_json['episode_list']
         remove_private_vars(show_json)
+        try:
+            show_json['airs_time'] = show.airs_time.strftime('%H:%M')
+        except:
+            show_json['airs_time'] = ''
+        show_json['runtime'] = str(show.runtime)
         show_json['episode_list'] = [self._decode_episode(episode) \
                                      for episode in episode_list]
         if isinstance(show.actors, list):

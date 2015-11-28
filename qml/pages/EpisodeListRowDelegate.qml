@@ -3,21 +3,24 @@ import Sailfish.Silica 1.0
 
 BackgroundItem {
     id: epListItem
-    width: ListView.view.width
+    width: parent.width
     contentHeight: Theme.itemSizeSmall
 
     signal watchToggled(bool watched)
+    property bool switchVisible: true
     property alias title: title.text
     property alias subtitle: subtitle.text
     property variant episode: undefined
 
     Row {
         anchors.fill: parent
+        anchors.leftMargin: switchVisible ? 0 : Theme.horizontalPageMargin
 
         Switch {
             id: markItem
             anchors.verticalCenter: parent.verticalCenter
             checked: episode.isWatched
+            visible: switchVisible
 
             onClicked: {
                 epListItem.watchToggled(checked)
@@ -27,7 +30,8 @@ BackgroundItem {
         Column {
             id: column
             anchors.verticalCenter: parent.verticalCenter
-            width: parent.width - markItem.width - Theme.horizontalPageMargin
+            width: switchVisible ? parent.width - markItem.width - Theme.horizontalPageMargin
+                                 : parent.width - Theme.horizontalPageMargin
 
             Label {
                 id: title
