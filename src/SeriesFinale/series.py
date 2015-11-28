@@ -61,6 +61,17 @@ class Show(object):
         self.downloading_season_image = downloading_season_image
         self._updating = False
 
+    def get_dict(self):
+        return {'showName': self.get_name(),
+                'showOverview': self.get_overview(),
+                'showGenre': self.genre[0] if self.genre else 'Other',
+                'infoMarkup': self.get_info_markup(),
+                'coverImage': self.cover_image(),
+                'lastAired': self.get_most_recent_air_date(),
+                'nextToWatch': self.get_next_unwatched_air_date(),
+                'isWatched': self.is_completely_watched(only_aired = True),
+                'isUpdating': self.get_updating()}
+
     def get_updating(self): return self._updating
     def set_updating(self, updating):
         self._updating = updating
@@ -75,7 +86,7 @@ class Show(object):
         return constants.PLACEHOLDER_IMAGE
     def set_cover_image(self, new_path):
         self.image = new_path
-        pyotherside.send('coverImageChanged', self.image)
+        pyotherside.send('coverImageChanged', self.get_name(), self.image)
 
     def get_name(self):
         return self.name
@@ -402,8 +413,7 @@ class Episode(object):
         self.watched = watched
         pyotherside.send('watchedChanged', self.watched)
         pyotherside.send('infoMarkupChanged')
-        series_manager = SeriesManager()
-        series_manager.changed = True
+        SeriesManager().updated()
 
     def get_overview(self):
         return self.overview
@@ -654,6 +664,7 @@ class SeriesManager(object):
         n_shows = len(show_list)
         for i in range(n_shows):
             show = show_list[i]
+            pyotherside.send('episodesListUpdating', show.get_name())
             show.set_updating(True)
             async_item = AsyncItem(self.thetvdb.get_show_and_episodes,
                                    (show.thetvdb_id, show.language,),
@@ -674,8 +685,8 @@ class SeriesManager(object):
                             for tvdb_ep in tvdbcompleteshow[1]])
             show.update_episode_list(episode_list)
         #pyotherside.send('updateShowEpisodesComplete', show)
-        pyotherside.send('episodesListUpdated', show.get_name())
         show.set_updating(False)
+        pyotherside.send('episodesListUpdated', show.get_dict())
         if last_call:
             #pyotherside.send('updateShowsCallComplete', show)
             self.isUpdating = False
@@ -728,11 +739,11 @@ class SeriesManager(object):
         self.series_list.append(show)
         self.changed = True
         self.isUpdating = False
+        pyotherside.send('showListChanged', self.changed)
         pyotherside.send('updating', self.isUpdating)
         return show
 
     def _get_complete_show_finished_cb(self, show, error):
-        #self.emit(self.GET_FULL_SHOW_COMPLETE_SIGNAL, show, error)
         logging.debug('GET_FULL_SHOW_COMPLETE_SIGNAL') #TODO
         async_worker = AsyncWorker(True)
         async_item = AsyncItem(self._set_show_images,
@@ -756,14 +767,7 @@ class SeriesManager(object):
     def get_series_list(self):
         series_list = []
         for show in self.series_list:
-            series_list.append({'showName': show.get_name(),
-                                'showOverview': show.get_overview(),
-                                'showGenre': show.genre[0] if show.genre else 'Other',
-                                'infoMarkup': show.get_info_markup(),
-                                'coverImage': show.cover_image(),
-                                'lastAired': show.get_most_recent_air_date(),
-                                'nextToWatch': show.get_next_unwatched_air_date(),
-                                'isWatched': show.is_completely_watched(only_aired = True)})
+            series_list.append(show.get_dict())
         return SortedSeriesList(series_list, Settings())
 
     def get_seasons_list(self, show_name):
@@ -830,7 +834,7 @@ class SeriesManager(object):
             show.id = self._get_id_for_show()
         self.series_list.append(show)
         self.changed = True
-        self.emit(self.SHOW_LIST_CHANGED_SIGNAL)
+        pyotherside.send('showListChanged', self.changed)
 
     def delete_show(self, show):
         for i in range(len(self.series_list)):
@@ -842,7 +846,7 @@ class SeriesManager(object):
                 del self.series_list[i]
                 self.changed = True
                 self.have_deleted = True
-                #self.emit(self.SHOW_LIST_CHANGED_SIGNAL)
+                pyotherside.send('showListChanged', self.changed)
                 break
 
     def delete_show_by_name(self, show_name):
@@ -957,6 +961,7 @@ class SeriesManager(object):
 
     def updated(self):
         self.changed = True
+        #pyotherside.send('showListChanged', self.changed)
 
     def auto_save(self, activate = True):
         if activate and not self.auto_save_id:

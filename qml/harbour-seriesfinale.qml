@@ -43,13 +43,14 @@ ApplicationWindow
         signal overviewChanged()
         signal titleChanged()
         signal airDateTextChanged()
-        signal coverImageChanged()
+        signal coverImageChanged(string name, string image)
         signal showArtChanged()
         signal watchedChanged(bool watched)
         signal infoMarkupChanged()
         signal loadingChanged(bool loading)
         signal showListChanged(bool changed)
-        signal episodesListUpdated(string name)
+        signal episodesListUpdated(var show)
+        signal episodesListUpdating(string name)
 
         Component.onCompleted: {
             addImportPath(Qt.resolvedUrl('../src'));
@@ -74,10 +75,12 @@ ApplicationWindow
             setHandler('showListChanged', python.showListChanged);
             setHandler('loadingChanged', python.loadingChanged);
             setHandler('episodesListUpdated', python.episodesListUpdated);
+            setHandler('episodesListUpdating', python.episodesListUpdating);
 
             importModule('seriesfinale', function () {
                 python.call('seriesfinale.seriesfinale.getVersion', [], function(result) {
                     version=result;
+                    ready = true;
                 });
             });
         }

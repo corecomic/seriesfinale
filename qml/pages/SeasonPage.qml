@@ -1,21 +1,20 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+import '../util.js' as Util
+
 Page {
     id: seasonPage
     property variant season: undefined
     property variant show: undefined
 
     property bool isUpdating: false
+    property bool isWatched: season.isWatched
 
     function update() {
         python.call('seriesfinale.seriesfinale.series_manager.get_episodes_list', [show.showName, season.seasonNumber], function(result) {
-            // Clear the data in the list model
-            episodesList.clear();
             // Load the received data into the list model
-            for (var i=0; i<result.length; i++) {
-                episodesList.append(result[i]);
-            }
+            Util.updateModelFrom(episodesList, result);
         });
     }
 
@@ -41,18 +40,20 @@ Page {
         PullDownMenu {
             MenuItem {
                 id: menuMarkAll
-                visible: !season.isWatched
+                visible: !isWatched
                 text: "Mark all"
                 onClicked: {
                     python.call('seriesfinale.seriesfinale.series_manager.mark_all_episodes_watched', [true, seasonPage.show.showName, season.seasonNumber]);
+                    isWatched = true;
                 }
             }
             MenuItem {
                 id: menuMarkNone
-                visible: season.isWatched
+                visible: isWatched
                 text: "Mark none"
                 onClicked: {
                     python.call('seriesfinale.seriesfinale.series_manager.mark_all_episodes_watched', [false, seasonPage.show.showName, season.seasonNumber]);
+                    isWatched = false;
                 }
             }
         }

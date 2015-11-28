@@ -1,6 +1,9 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+import '../util.js' as Util
+
+
 Page {
     id: showPage
     property variant show: undefined
@@ -11,12 +14,8 @@ Page {
 
     function update() {
         python.call('seriesfinale.seriesfinale.series_manager.get_seasons_list', [show.showName], function(result) {
-            // Clear the data in the list model
-            seasonList.clear();
             // Load the received data into the list model
-            for (var i=0; i<result.length; i++) {
-                seasonList.append(result[i]);
-            }
+            Util.updateModelFrom(seasonList, result);
             hasChanged = false;
         });
     }
@@ -44,7 +43,12 @@ Page {
         onEpisodesListUpdated: update()
         onInfoMarkupChanged: hasChanged = true
 
-        //onShowArtChanged: delegate.iconSource = show.get_season_image(model.data)
+
+        onShowArtChanged: {
+            python.call('seriesfinale.seriesfinale.series_manager.get_seasons_list', [show.showName], function(result) {
+                Util.updateModelWith(seasonList, 'seasonImage', '', result);
+            });
+        }
 
         //onInfoMarkupChanged: {
         //    delegate.subtitle = show.get_season_info_markup(model.data)

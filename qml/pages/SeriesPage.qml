@@ -1,12 +1,13 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+import '../util.js' as Util
+
 Page {
     id: seriesPage
 
-    property variant series: undefined
-
     property bool isUpdating: false
+    property bool isLoading: false
     property bool hasChanged: false
 
     function getRandomNumber(min, max) {
@@ -15,13 +16,10 @@ Page {
 
     function update() {
         python.call('seriesfinale.seriesfinale.series_manager.get_series_list', [], function(result) {
-            // Clear the data in the list model
-            seriesList.clear();
             // Load the received data into the list model
-            for (var i=0; i<result.length; i++) {
-                seriesList.append(result[i]);
-            }
-            series = seriesList;
+            Util.updateModelFrom(seriesList, result);
+
+            isLoading = false;
             hasChanged = false;
             coverImage = seriesList.get(getRandomNumber(0, result.length)).coverImage;
         });
@@ -45,7 +43,7 @@ Page {
         target: python
 
         onLoadingChanged: {
-            seriesPage.isUpdating = loading;
+            seriesPage.isLoading = true;
             if(!loading) {
                 update();
             }
@@ -53,16 +51,43 @@ Page {
 
         onUpdatingChanged: {
             seriesPage.isUpdating = updating;
-            if(!updating) {
-                update();
+        }
+
+        onShowListChanged: {
+            if (changed) {
+                update()
             }
         }
 
-
-        onCoverImageChanged: update()
-        onEpisodesListUpdated: {
-            update()
+        onCoverImageChanged: {
+            for (var i=0; i<seriesList.count; i++) {
+                var show = seriesList.get(i);
+                if (show.showName === name) {
+                    seriesList.setProperty(i, 'coverImage', image);
+                    break;
+                }
+            }
         }
+
+        onEpisodesListUpdating: {
+            for (var i=0; i<seriesList.count; i++) {
+                var show = seriesList.get(i);
+                if (show.showName === name) {
+                    seriesList.setProperty(i, 'isUpdating', true);
+                    break;
+                }
+            }
+        }
+
+        onEpisodesListUpdated: {
+            for (var i=0; i<seriesList.count; i++) {
+                if (seriesList.get(i).showName === show.showName) {
+                    seriesList.set(i, show);
+                    break;
+                }
+            }
+        }
+
         onInfoMarkupChanged: hasChanged = true
     }
 
@@ -73,6 +98,8 @@ Page {
 
         // PullDownMenu
         PullDownMenu {
+            busy: isUpdating
+
             MenuItem {
                 text: "About"
                 onClicked: pageStack.push(aboutComponent.createObject(pageStack))
@@ -84,8 +111,9 @@ Page {
                 Component { id: settingsComponent; SettingsPage {} }
             }
             MenuItem {
-                text: "Refresh"
+                text: seriesPage.isUpdating ? "Refreshing..." : "Refresh"
                 visible: seriesList.count != 0
+                enabled: !seriesPage.isUpdating
                 onClicked: python.call('seriesfinale.seriesfinale.series_manager.update_all_shows_episodes', [])
             }
             MenuItem {
@@ -114,6 +142,7 @@ Page {
         delegate: ListRowDelegate {
             id: listDelegate
 
+            isUpdating: model.isUpdating
             title: model.showName
             subtitle: model.infoMarkup
             iconSource: model.coverImage
@@ -154,7 +183,7 @@ Page {
             function showRemorseItem() {
                 remorse.execute(listDelegate, "Deleting", function() {
                     python.call('seriesfinale.seriesfinale.series_manager.delete_show_by_name', [model.showName]);
-                    seriesList.remove(index);
+                    //seriesList.remove(index);
                 })
             }
 
@@ -166,12 +195,12 @@ Page {
         ViewPlaceholder {
             id: emptyText
             text: 'No shows'
-            enabled: seriesList.count == 0 && !seriesPage.isUpdating
+            enabled: seriesList.count == 0 && !seriesPage.isLoading
         }
 
         BusyIndicator {
             id: loadingIndicator
-            visible: seriesPage.isUpdating
+            visible: seriesPage.isLoading || !python.ready
             running: visible
             anchors.centerIn: parent
             size: BusyIndicatorSize.Large
