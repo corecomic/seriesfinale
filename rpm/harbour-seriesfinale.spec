@@ -3,7 +3,7 @@
 
 Name:       harbour-seriesfinale
 Summary:    SeriesFinale is a TV series browser and tracker application.
-Version:    1.2.0
+Version:    1.3.0
 Release:    1
 Group:      Applications/Internet
 License:    GPLv3
@@ -79,6 +79,11 @@ desktop-file-install --delete-original       \
 %changelog
 # * date Author's Name <author's email> version-release
 # - Summary of changes
+* Mon Jan 04 2016 Core Comic <core.comic@gmail.com> 1.3.0-1
+- Add menu item for refreshing a single show only
+- Fix season sorting and getting most recent air date
+- UI improvements (loading, refreshing)
+
 * Thu Oct 29 2015 Core Comic <core.comic@gmail.com> 1.2.0-1
 - Fix showing 'completely whatched' when there are upcoming episodes
 - Can mark next episode from main page
