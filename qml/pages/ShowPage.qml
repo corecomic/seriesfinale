@@ -40,7 +40,6 @@ Page {
             }
         }
 
-        onEpisodesListUpdated: update()
         onInfoMarkupChanged: hasChanged = true
 
 
@@ -108,13 +107,14 @@ Page {
         // PullDownMenu
         PullDownMenu {
             MenuItem {
-                text: "Info"
-                onClicked: showInfoDialog.open()
+                text: showPage.isUpdating ? "Refreshing..." : "Refresh"
+                visible: seasonList.count != 0
+                enabled: !showPage.isUpdating
+                onClicked: python.call('seriesfinale.seriesfinale.series_manager.update_show_by_name', [show.showName])
             }
             MenuItem {
-                text: "Refresh"
-                visible: false
-                onClicked: python.call('seriesfinale.seriesfinale.series_manager.update_show_by_name', [show.showName])
+                text: "Info"
+                onClicked: showInfoDialog.open()
             }
         }
 
