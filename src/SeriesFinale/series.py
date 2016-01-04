@@ -42,7 +42,7 @@ class Show(object):
     def __init__(self, name, genre = None, overview = None, network = None,
                  rating = None, actors = [], episode_list = [], image = None,
                  thetvdb_id = -1, season_images = {}, id = -1, language = None,
-                 status = None, airs_time = None, runtime = None,
+                 status = None, airs_time = '', runtime = None,
                  downloading_show_image = False, downloading_season_image = False):
         self.id = id
         self.name = name
@@ -57,8 +57,11 @@ class Show(object):
         self.thetvdb_id = thetvdb_id
         self.language = language
         self.status = status
-        self.runtime = runtime
-        self.airs_time = airs_time
+        self.runtime = runtime if not runtime=='None' else None
+        try:
+            self.airs_time = datetime.strptime(airs_time, '%H:%M').time()
+        except:
+            self.airs_time = ''
         self.downloading_show_image = False
         self.downloading_season_image = downloading_season_image
         self._updating = False
@@ -69,7 +72,7 @@ class Show(object):
                 'showGenre': self.genre[0] if self.genre else 'Other',
                 'showNetwork': self.network,
                 'runtime': int(self.runtime) if self.runtime else 60,
-                'airsTime': self.airs_time,
+                'airsTime': self.airs_time.strftime('%H:%M') if self.airs_time else '',
                 'infoMarkup': self.get_info_markup(),
                 'coverImage': self.cover_image(),
                 'lastAired': self.get_most_recent_air_date(),
@@ -329,7 +332,8 @@ class Show(object):
         aired_episodes = [episode for episode in episodes \
                             if episode.already_aired()]
         try:
-            return aired_episodes[-1].air_date
+            sorted_list = sorted(aired_episodes, key=lambda k: k.air_date)
+            return sorted_list[-1].air_date
         except:
             return None
 

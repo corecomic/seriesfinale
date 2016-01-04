@@ -84,6 +84,7 @@ def SortedSeriesList(series_list, settings):
 
 def SortedSeasonsList(season_list, settings):
     sortOrder = settings.getConf(settings.SEASONS_ORDER_CONF_NAME)
+    season_list = sorted(season_list, key=lambda k: k['seasonNumber'])
     if (sortOrder == settings.DESCENDING_ORDER):
         return list(reversed(season_list))
     return season_list
