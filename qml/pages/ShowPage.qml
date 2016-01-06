@@ -107,13 +107,13 @@ Page {
         // PullDownMenu
         PullDownMenu {
             MenuItem {
-                text: showPage.isUpdating ? "Refreshing..." : "Refresh"
+                text: showPage.isUpdating ? qsTr("Refreshing...") : qsTr("Refresh")
                 visible: seasonList.count != 0
                 enabled: !showPage.isUpdating
                 onClicked: python.call('seriesfinale.seriesfinale.series_manager.update_show_by_name', [show.showName])
             }
             MenuItem {
-                text: "Info"
+                text: qsTr("Info")
                 onClicked: showInfoDialog.open()
             }
         }
@@ -143,7 +143,7 @@ Page {
                 ContextMenu {
                     MenuItem {
                         id: markAllItem
-                        text: model.isWatched ? 'Mark None' : 'Mark All'
+                        text: model.isWatched ? qsTr('Mark None') : qsTr('Mark All')
                         onClicked: {
                             if (model.isWatched) {
                                 python.call('seriesfinale.seriesfinale.series_manager.mark_all_episodes_watched', [false, showPage.show.showName, model.seasonNumber])
@@ -154,7 +154,7 @@ Page {
                         }
                     }
                     MenuItem {
-                        text: "Delete season";
+                        text: qsTr("Delete season");
                         onClicked: showRemorseItem()
                     }
                 }
@@ -162,7 +162,7 @@ Page {
 
             RemorseItem { id: remorse }
             function showRemorseItem() {
-                remorse.execute(listDelegate, "Deleting", function() {
+                remorse.execute(listDelegate, qsTr("Deleting"), function() {
                     python.call('seriesfinale.seriesfinale.series_manager.delete_season', [showPage.show.showName, model.seasonNumber]);
                     seasonList.remove(index);
                 })
@@ -173,7 +173,7 @@ Page {
 
         ViewPlaceholder {
             id: emptyText
-            text: 'No seasons'
+            text: qsTr('No seasons')
             enabled: seasonList.count == 0 && !showPage.isUpdating
         }
 

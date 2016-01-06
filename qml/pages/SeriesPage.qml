@@ -101,23 +101,23 @@ Page {
             busy: isUpdating
 
             MenuItem {
-                text: "About"
+                text: qsTr("About")
                 onClicked: pageStack.push(aboutComponent.createObject(pageStack))
                 Component { id: aboutComponent; AboutPage {} }
             }
             MenuItem {
-                text: "Settings"
+                text: qsTr("Settings")
                 onClicked: pageStack.push(settingsComponent.createObject(pageStack))
                 Component { id: settingsComponent; SettingsPage {} }
             }
             MenuItem {
-                text: seriesPage.isUpdating ? "Refreshing..." : "Refresh"
+                text: seriesPage.isUpdating ? qsTr("Refreshing...") : qsTr("Refresh")
                 visible: seriesList.count != 0
                 enabled: !seriesPage.isUpdating
                 onClicked: python.call('seriesfinale.seriesfinale.series_manager.update_all_shows_episodes', [])
             }
             MenuItem {
-                text: "Add Show"
+                text: qsTr("Add Show")
                 visible: !seriesPage.isUpdating
                 onClicked: { pageStack.push(addShowComponent.createObject(pageStack)) }
                 Component { id: addShowComponent; AddShow {} }
@@ -157,7 +157,7 @@ Page {
                     MenuItem {
                         id: markNextItem
                         visible: !model.isWatched
-                        text: 'Mark next episode'
+                        text: qsTr('Mark next episode')
                         onClicked: {
                             python.call('seriesfinale.seriesfinale.series_manager.mark_next_episode_watched', [true, model.showName])
                             seriesPage.update()
@@ -166,14 +166,14 @@ Page {
                     MenuItem {
                         id: markAllItem
                         visible: !model.isWatched
-                        text: 'Mark show as watched'
+                        text: qsTr('Mark show as watched')
                         onClicked: {
                             python.call('seriesfinale.seriesfinale.series_manager.mark_all_episodes_watched', [true, model.showName])
                             seriesPage.update()
                         }
                     }
                     MenuItem {
-                        text: "Delete show";
+                        text: qsTr("Delete show")
                         onClicked: showRemorseItem()
                     }
                 }
@@ -181,7 +181,7 @@ Page {
 
             RemorseItem { id: remorse }
             function showRemorseItem() {
-                remorse.execute(listDelegate, "Deleting", function() {
+                remorse.execute(listDelegate, qsTr("Deleting"), function() {
                     python.call('seriesfinale.seriesfinale.series_manager.delete_show_by_name', [model.showName]);
                     //seriesList.remove(index);
                 })
@@ -194,7 +194,7 @@ Page {
 
         ViewPlaceholder {
             id: emptyText
-            text: 'No shows'
+            text: qsTr('No shows')
             enabled: seriesList.count == 0 && !seriesPage.isLoading
         }
 

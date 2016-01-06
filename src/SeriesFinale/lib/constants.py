@@ -77,7 +77,7 @@ PLACEHOLDER_IMAGE = os.path.join(APP_DIR, 'src/SeriesFinale/placeholderimage.png
 DOWNLOADING_IMAGE = os.path.join(APP_DIR, 'downloadingimage.png')
 QML_MAIN          = os.path.join(QML_DIR, 'main.qml')
 
-LOCALE_DIR = os.path.join(APP_DIR, 'locale')
+LOCALE_DIR = os.path.join(APP_DIR, 'src/SeriesFinale/locale')
 
 
 DEFAULT_LANGUAGES = os.environ.get('LANGUAGE', '').split(':')

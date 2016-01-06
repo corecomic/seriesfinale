@@ -4,7 +4,103 @@
 <context>
     <name>AddShow</name>
     <message>
+        <source>Search options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Add show</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Search</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>EpisodePage</name>
+    <message>
+        <source>Air date:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rating:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Overview:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Watched</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SearchSettingsPage</name>
+    <message>
+        <source>Search options</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Language</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SeasonPage</name>
+    <message>
+        <source>Mark all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark none</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No episodes</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SeriesPage</name>
+    <message>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refreshing...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add Show</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark next episode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark show as watched</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete show</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No shows</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -19,15 +115,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Sorting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Show sorting</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Add special seasons</source>
+        <source>By title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Episode sorting</source>
+        <source>By next episode date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>By last aired episode</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -35,7 +139,50 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Episode sorting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Sort by genre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add special seasons</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ShowPage</name>
+    <message>
+        <source>Refreshing...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Refresh</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark All</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete season</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No seasons</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

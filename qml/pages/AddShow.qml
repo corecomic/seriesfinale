@@ -48,7 +48,7 @@ Page {
 
         PullDownMenu {
             MenuItem {
-                text: 'Search options'
+                text: qsTr('Search options')
                 onClicked: pageStack.push(Qt.resolvedUrl("SearchSettingsPage.qml"), {language: searchLanguage})
             }
         }
@@ -66,7 +66,7 @@ Page {
                 id: searchField
 
                 width: parent.width
-                placeholderText: "Search"
+                placeholderText: qsTr("Search")
                 inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhNoPredictiveText
 
                 onTextChanged: {

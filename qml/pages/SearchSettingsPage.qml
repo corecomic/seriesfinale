@@ -32,12 +32,12 @@ Page {
             spacing: Theme.paddingLarge
 
             PageHeader {
-                title: 'Search options'
+                title: qsTr('Search options')
             }
 
             ComboBox {
                 id: languageMenu
-                label: 'Language'
+                label: qsTr('Language')
                 menu: ContextMenu {
                     MenuItem { text: "English"; onClicked: setLanguage('en')}
                     MenuItem { text: "Svenska"; onClicked: setLanguage('sv')}
