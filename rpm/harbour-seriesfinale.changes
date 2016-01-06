@@ -9,6 +9,9 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Wed Jan 06 2016 Core Comic <core.comic@gmail.com> 1.3.1-1
+- Add spanish and german translation
+
 * Mon Jan 04 2016 Core Comic <core.comic@gmail.com> 1.3.0-1
 - Add menu item for refreshing a single show only
 - Fix season sorting and getting most recent air date

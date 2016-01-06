@@ -2,7 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="de">
 <context>
-    <name>Python</name>
+    <name></name>
     <message numerus="yes">
         <location filename="src/SeriesFinale/series.py" line="268"/>
         <source>%s season</source>
