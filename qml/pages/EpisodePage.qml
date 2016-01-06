@@ -28,7 +28,7 @@ Page {
               spacing: 10
 
               Text {
-                  text: "Air date:"
+                  text: qsTr("Air date:")
                   font.pixelSize: Theme.fontSizeSmall
                   color: Theme.primaryColor
               }
@@ -38,7 +38,7 @@ Page {
                   color: Theme.secondaryColor
               }
               Text {
-                  text: "Rating:"
+                  text: qsTr("Rating:")
                   font.pixelSize: Theme.fontSizeSmall
                   color: Theme.primaryColor
               }
@@ -82,7 +82,7 @@ Page {
             Text {
                 id: overviewTitle
                 font.pixelSize: Theme.fontSizeSmall
-                text: 'Overview:'
+                text: qsTr('Overview:')
                 color: Theme.highlightColor
             }
 
@@ -106,7 +106,7 @@ Page {
         anchors.bottomMargin: Theme.paddingLarge
         anchors.left: parent.left
         anchors.leftMargin: Theme.horizontalPageMargin
-        text: "Watched"
+        text: qsTr("Watched")
         onCheckedChanged: {
             python.call('seriesfinale.seriesfinale.series_manager.set_episode_watched', [checked, show.showName, episode.episodeName])
         }

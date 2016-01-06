@@ -1,0 +1,91 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-01-05 22:16+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/SeriesFinale/series.py:268
+#, python-format
+msgid "%s season"
+msgid_plural "%s seasons"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/SeriesFinale/series.py:271 src/SeriesFinale/series.py:309
+msgid "Completely watched"
+msgstr ""
+
+#: src/SeriesFinale/series.py:273
+msgid "Show has ended"
+msgstr ""
+
+#: src/SeriesFinale/series.py:277 src/SeriesFinale/series.py:313
+#, python-format
+msgid "%s episode not watched"
+msgid_plural "%s episodes not watched"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/SeriesFinale/series.py:282 src/SeriesFinale/series.py:318
+msgid "No episodes to watch"
+msgstr ""
+
+#: src/SeriesFinale/series.py:286
+#, python-format
+msgid "<i>Next:</i> %s, %s"
+msgstr ""
+
+#: src/SeriesFinale/series.py:290
+#, python-format
+msgid "<i>Next:</i> %s"
+msgstr ""
+
+#: src/SeriesFinale/series.py:298
+msgid "Special"
+msgstr ""
+
+#: src/SeriesFinale/series.py:300
+#, python-format
+msgid "Season %s"
+msgstr ""
+
+#: src/SeriesFinale/series.py:322
+#, python-format
+msgid "<i>Next episode:</i> %s, %s"
+msgstr ""
+
+#: src/SeriesFinale/series.py:326
+#, python-format
+msgid "<i>Next episode:</i> %s"
+msgstr ""
+
+#: src/SeriesFinale/series.py:420
+#, python-format
+msgid "Ep. %s: %s"
+msgstr ""
+
+#: src/SeriesFinale/series.py:467
+msgid "Today"
+msgstr ""
+
+#: src/SeriesFinale/series.py:469
+msgid "Tomorrow"
+msgstr ""
+
+#: src/SeriesFinale/series.py:471
+msgid "Yesterday"
+msgstr ""

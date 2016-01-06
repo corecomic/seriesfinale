@@ -41,7 +41,7 @@ Page {
             MenuItem {
                 id: menuMarkAll
                 visible: !isWatched
-                text: "Mark all"
+                text: qsTr("Mark all")
                 onClicked: {
                     python.call('seriesfinale.seriesfinale.series_manager.mark_all_episodes_watched', [true, seasonPage.show.showName, season.seasonNumber]);
                     isWatched = true;
@@ -50,7 +50,7 @@ Page {
             MenuItem {
                 id: menuMarkNone
                 visible: isWatched
-                text: "Mark none"
+                text: qsTr("Mark none")
                 onClicked: {
                     python.call('seriesfinale.seriesfinale.series_manager.mark_all_episodes_watched', [false, seasonPage.show.showName, season.seasonNumber]);
                     isWatched = false;
@@ -85,7 +85,7 @@ Page {
 
         ViewPlaceholder {
             id: emptyText
-            text: 'No episodes'
+            text: qsTr('No episodes')
             enabled: episodesList.count == 0 && !seasonPage.isUpdating
         }
 

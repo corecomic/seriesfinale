@@ -54,7 +54,7 @@ Dialog {
             }
 
             SectionHeader {
-                text: "Sorting"
+                text: qsTr("Sorting")
             }
 
             ComboBox {
@@ -62,9 +62,9 @@ Dialog {
                 label: qsTr("Show sorting")
                 menu: ContextMenu {
                     id: showSortingMenu
-                    MenuItem { text: "By title"; }
-                    MenuItem { text: "By next episode date"; }
-                    MenuItem { text: "By last aired episode"; }
+                    MenuItem { text: qsTr("By title"); }
+                    MenuItem { text: qsTr("By next episode date"); }
+                    MenuItem { text: qsTr("By last aired episode"); }
                 }
             }
 
