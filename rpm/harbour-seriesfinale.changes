@@ -9,6 +9,10 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Mon Jan 25 2016 Core Comic <core.comic@gmail.com> 1.3.2-1
+- Fix season sorting
+- Fix redownloading images
+
 * Wed Jan 06 2016 Core Comic <core.comic@gmail.com> 1.3.1-1
 - Add spanish and german translation
 

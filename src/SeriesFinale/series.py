@@ -901,7 +901,7 @@ class SeriesManager(object):
             return
         self._assign_existing_images_to_show(show)
         seasons = show.get_seasons()
-        for key, image in show.season_images.items():
+        for key, image in list(show.season_images.items()):
             if not os.path.isfile(image):
                 del show.season_images[key]
                 self.changed = True
