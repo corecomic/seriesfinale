@@ -11,6 +11,7 @@ Dialog {
         python.call('seriesfinale.seriesfinale.settingsWrapper.setSeasonsOrder', [seasonSorting.currentIndex])
         python.call('seriesfinale.seriesfinale.settingsWrapper.setEpisodesOrder', [episodeSorting.currentIndex])
         python.call('seriesfinale.seriesfinale.settingsWrapper.setAddSpecialSeasons', [specialSeasonsSwitch.checked])
+        python.call('seriesfinale.seriesfinale.settingsWrapper.setUpdateEndedShows', [updateEndedShowsSwitch.checked])
         python.call('seriesfinale.seriesfinale.saveSettings', [])
     }
 
@@ -29,6 +30,9 @@ Dialog {
         })
         python.call('seriesfinale.seriesfinale.settingsWrapper.getAddSpecialSeasons', [], function(result) {
             specialSeasonsSwitch.checked = result;
+        })
+        python.call('seriesfinale.seriesfinale.settingsWrapper.getUpdateEndedShows', [], function(result) {
+            updateEndedShowsSwitch.checked = result;
         })
         seriesPage.hasChanged = true
     }
@@ -94,12 +98,17 @@ Dialog {
             }
 
             SectionHeader {
-                text: ""
+                text: qsTr("Other")
             }
 
             TextSwitch {
                 id: specialSeasonsSwitch
                 text: qsTr("Add special seasons")
+            }
+
+            TextSwitch {
+                id: updateEndedShowsSwitch
+                text: qsTr("Update ended shows")
             }
         }
     }

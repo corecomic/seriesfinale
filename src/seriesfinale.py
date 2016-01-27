@@ -70,6 +70,11 @@ class SettingsWrapper():
     def setSearchLanguage(self, language):
         Settings().setConf(Settings.SEARCH_LANGUAGE, language)
 
+    def getUpdateEndedShows(self):
+        return Settings().getConf(Settings.UPDATE_ENDED_SHOWS)
+    def setUpdateEndedShows(self, add):
+        Settings().setConf(Settings.UPDATE_ENDED_SHOWS, add)
+
 class SeriesFinale:
     def __init__(self):
         # i18n

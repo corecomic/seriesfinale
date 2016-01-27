@@ -676,7 +676,14 @@ class SeriesManager(object):
         i = 0
         n_shows = len(show_list)
         for i in range(n_shows):
+            update_ended_shows = Settings().getConf(Settings.UPDATE_ENDED_SHOWS)
             show = show_list[i]
+            if show.status and show.status == 'Ended' and not update_ended_shows:
+                async_item = AsyncItem(self._empty_callback, (),
+                                       self._set_show_episodes_complete_cb,
+                                       (show, update_images_worker, i == n_shows - 1))
+                async_worker.queue.put(async_item)
+                continue
             pyotherside.send('episodesListUpdating', show.get_name())
             show.set_updating(True)
             async_item = AsyncItem(self.thetvdb.get_show_and_episodes,
@@ -712,6 +719,9 @@ class SeriesManager(object):
             return
         for show_id, show in tvdbshows:
             pass
+
+    def _empty_callback(self):
+        pass
 
     def get_complete_show(self, show_name, language = "en"):
         # Test if the show has already been added.
