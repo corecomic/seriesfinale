@@ -31,8 +31,10 @@ ListItem {
         height: listItem.contentHeight - 6
         width: height
 
+        asynchronous: true
         fillMode: "PreserveAspectFit"
-        smooth: true
+        smooth: false
+        sourceSize.height: height
         source: ''
         opacity: isUpdating ? 0.2 :
                               String(source).indexOf('placeholderimage') > -1 ? 0.5 : 1.0
