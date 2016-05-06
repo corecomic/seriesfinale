@@ -150,6 +150,14 @@
         <source>By last aired episode</source>
         <translation>Nach letzdem Sendedatum</translation>
     </message>
+    <message>
+        <source>Update ended shows</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Other</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ShowPage</name>

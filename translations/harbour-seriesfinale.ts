@@ -150,6 +150,14 @@
         <source>Add special seasons</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Update ended shows</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Other</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ShowPage</name>
