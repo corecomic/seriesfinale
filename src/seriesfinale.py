@@ -113,6 +113,32 @@ class SeriesFinale:
     def getVersion(self):
         return self.version
 
+    def getStatistics(self):
+        n_series = len(self.series_manager.series_list)
+        n_series_watched = 0
+        n_all_episodes = 0
+        n_episodes_to_watch = 0
+        time_watched = 0
+        for i in range(n_series):
+            show = self.series_manager.series_list[i]
+            episodes = show.episode_list
+            aired_episodes = [episode for episode in episodes \
+                              if episode.already_aired()]
+            episodes_to_watch = [episode for episode in aired_episodes \
+                                 if not episode.watched]
+            n_all_episodes += len(aired_episodes)
+            if episodes_to_watch:
+                n_episodes_to_watch += len(episodes_to_watch)
+            else:
+                n_series_watched += 1
+            if show.runtime:
+                time_watched += (len(aired_episodes)-len(episodes_to_watch))*int(show.runtime)
+        return {'numSeries': n_series,
+                'numSeriesWatched': n_series_watched,
+                'numEpisodes': n_all_episodes,
+                'numEpisodesWatched': n_all_episodes-n_episodes_to_watch,
+                'timeWatched': time_watched}
+
     def closeEvent(self):
         # If the shows list is empty but the user hasn't deleted
         # any, then we don't save in order to avoid overwriting

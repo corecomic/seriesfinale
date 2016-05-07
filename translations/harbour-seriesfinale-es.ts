@@ -194,4 +194,31 @@
         <translation>No hay temporadas</translation>
     </message>
 </context>
+<context>
+    <name>StatisticsPage</name>
+    <message>
+        <source>Statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Number of shows:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Watched shows:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Number of episodes:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Watched episodes:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Days spent watching:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 </TS>

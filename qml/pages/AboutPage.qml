@@ -84,4 +84,11 @@ Page {
             }
         }
     }
+
+    Component { id: statisticsComponent; StatisticsPage {} }
+    onStatusChanged: {
+        if (status === PageStatus.Active) {
+            pageStack.pushAttached(statisticsComponent);
+        }
+    }
 }
