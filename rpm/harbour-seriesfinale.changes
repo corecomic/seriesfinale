@@ -8,6 +8,10 @@
 %changelog
 # * date Author's Name <author's email> version-release
 # - Summary of changes
+* Sun May 08 2016 Core Comic <core.comic@gmail.com> 1.4.0-1
+- Add setting to select whether ended shows are also refreshed
+- Added some statistics (about page)
+- Fix stuttering on main page, improve responsiveness
 
 * Mon Jan 25 2016 Core Comic <core.comic@gmail.com> 1.3.2-1
 - Fix season sorting

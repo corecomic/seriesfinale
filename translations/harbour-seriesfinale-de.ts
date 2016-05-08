@@ -152,11 +152,11 @@
     </message>
     <message>
         <source>Update ended shows</source>
-        <translation type="unfinished"></translation>
+        <translation>Beendete Serien aktualisieren</translation>
     </message>
     <message>
         <source>Other</source>
-        <translation type="unfinished"></translation>
+        <translation>Anderes</translation>
     </message>
 </context>
 <context>
@@ -198,27 +198,27 @@
     <name>StatisticsPage</name>
     <message>
         <source>Statistics</source>
-        <translation type="unfinished"></translation>
+        <translation>Statistik</translation>
     </message>
     <message>
         <source>Number of shows:</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzahl Serien:</translation>
     </message>
     <message>
         <source>Watched shows:</source>
-        <translation type="unfinished"></translation>
+        <translation>Gesehene Serien:</translation>
     </message>
     <message>
         <source>Number of episodes:</source>
-        <translation type="unfinished"></translation>
+        <translation>Anzahl Folgen:</translation>
     </message>
     <message>
         <source>Watched episodes:</source>
-        <translation type="unfinished"></translation>
+        <translation>Gesehene Folgen:</translation>
     </message>
     <message>
         <source>Days spent watching:</source>
-        <translation type="unfinished"></translation>
+        <translation>Tage mit zuschauen verbracht:</translation>
     </message>
 </context>
 </TS>
