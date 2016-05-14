@@ -8,6 +8,9 @@
 %changelog
 # * date Author's Name <author's email> version-release
 # - Summary of changes
+* Sat May 14 2016 Core Comic <core.comic@gmail.com> 1.4.1-1
+- Add swedish translation
+
 * Sun May 08 2016 Core Comic <core.comic@gmail.com> 1.4.0-1
 - Add setting to select whether ended shows are also refreshed
 - Added some statistics (about page)
