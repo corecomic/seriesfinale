@@ -220,5 +220,13 @@
         <source>Days spent watching:</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Ended shows:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Last refresh:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

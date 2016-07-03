@@ -45,6 +45,7 @@ class Settings(object):
     HIDE_COMPLETED_SHOWS = 'hide_completed_shows'
     SEARCH_LANGUAGE = 'search_language'
     UPDATE_ENDED_SHOWS = 'update_ended_shows'
+    LAST_COMPLETE_UPDATE = 'last_complete_update'
 
     LEFT = 0
     RIGHT = 1
@@ -58,7 +59,8 @@ class Settings(object):
              EPISODES_CHECK_POSITION: int,
              HIDE_COMPLETED_SHOWS: bool,
              SEARCH_LANGUAGE: str,
-             UPDATE_ENDED_SHOWS: bool}
+             UPDATE_ENDED_SHOWS: bool,
+             LAST_COMPLETE_UPDATE: str}
     DEFAULTS = {EPISODES_ORDER_CONF_NAME: DESCENDING_ORDER,
                 SEASONS_ORDER_CONF_NAME: ASCENDING_ORDER,
                 SHOWS_SORT: RECENT_EPISODE,
@@ -68,7 +70,8 @@ class Settings(object):
                 EPISODES_CHECK_POSITION: RIGHT,
                 HIDE_COMPLETED_SHOWS: False,
                 SEARCH_LANGUAGE: 'en',
-                UPDATE_ENDED_SHOWS: True}
+                UPDATE_ENDED_SHOWS: True,
+                LAST_COMPLETE_UPDATE: '-'}
 
     conf = dict(DEFAULTS)
     changed = False

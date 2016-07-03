@@ -8,9 +8,13 @@ Page {
         python.call('seriesfinale.seriesfinale.getStatistics', [], function(result) {
             numShows.text = result.numSeries;
             watchedShows.text = result.numSeriesWatched + ' (' + Math.round(100*result.numSeriesWatched/result.numSeries) + '%)';
+            endedShows.text = result.numSeriesEnded;
             numEpisodes.text = result.numEpisodes;
             watchedEpisodes.text = result.numEpisodesWatched + ' (' + Math.round(100*result.numEpisodesWatched/result.numEpisodes) + '%)';
             timeWatched.text = Math.round(result.timeWatched/14.4)/100;
+        })
+        python.call('seriesfinale.seriesfinale.settingsWrapper.getLastCompleteUpdate', [], function(result) {
+            lastUpdate.text = result;
         })
 
     }
@@ -48,6 +52,17 @@ Page {
                 }
                 Text {
                     id: numShows
+                    text: ""
+                    font.pixelSize: Theme.fontSizeSmall
+                    color: Theme.secondaryColor
+                }
+                Text {
+                    text: qsTr("Ended shows:")
+                    font.pixelSize: Theme.fontSizeSmall
+                    color: Theme.primaryColor
+                }
+                Text {
+                    id: endedShows
                     text: ""
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.secondaryColor
@@ -92,6 +107,17 @@ Page {
                 }
                 Text {
                     id: timeWatched
+                    text: ""
+                    font.pixelSize: Theme.fontSizeSmall
+                    color: Theme.secondaryColor
+                }
+                Text {
+                    text: qsTr("Last refresh:")
+                    font.pixelSize: Theme.fontSizeSmall
+                    color: Theme.primaryColor
+                }
+                Text {
+                    id: lastUpdate
                     text: ""
                     font.pixelSize: Theme.fontSizeSmall
                     color: Theme.secondaryColor

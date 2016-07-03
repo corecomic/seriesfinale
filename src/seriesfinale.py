@@ -75,6 +75,11 @@ class SettingsWrapper():
     def setUpdateEndedShows(self, add):
         Settings().setConf(Settings.UPDATE_ENDED_SHOWS, add)
 
+    def getLastCompleteUpdate(self):
+        return Settings().getConf(Settings.LAST_COMPLETE_UPDATE)
+    def setLastCompleteUpdate(self, date):
+        Settings().setConf(Settings.LAST_COMPLETE_UPDATE, date)
+
 class SeriesFinale:
     def __init__(self):
         # i18n
@@ -116,6 +121,7 @@ class SeriesFinale:
     def getStatistics(self):
         n_series = len(self.series_manager.series_list)
         n_series_watched = 0
+        n_series_ended = 0
         n_all_episodes = 0
         n_episodes_to_watch = 0
         time_watched = 0
@@ -133,8 +139,11 @@ class SeriesFinale:
                 n_series_watched += 1
             if show.runtime:
                 time_watched += (len(aired_episodes)-len(episodes_to_watch))*int(show.runtime)
+            if show.status and show.status == 'Ended':
+                n_series_ended += 1
         return {'numSeries': n_series,
                 'numSeriesWatched': n_series_watched,
+                'numSeriesEnded': n_series_ended,
                 'numEpisodes': n_all_episodes,
                 'numEpisodesWatched': n_all_episodes-n_episodes_to_watch,
                 'timeWatched': time_watched}

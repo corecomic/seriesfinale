@@ -220,5 +220,13 @@
         <source>Days spent watching:</source>
         <translation>Tage mit zuschauen verbracht:</translation>
     </message>
+    <message>
+        <source>Ended shows:</source>
+        <translation>Beendete Serien:</translation>
+    </message>
+    <message>
+        <source>Last refresh:</source>
+        <translation>Zuletzt aktualisiert:</translation>
+    </message>
 </context>
 </TS>

@@ -46,7 +46,7 @@ Page {
 
                 Label {
                     font.pixelSize: Theme.fontSizeSmall
-                    text: 'Copyright © 2015 Core Comic'
+                    text: 'Copyright © 2016 Core Comic'
                     color: Theme.primaryColor
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
