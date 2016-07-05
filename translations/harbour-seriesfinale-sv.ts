@@ -222,11 +222,11 @@
     </message>
     <message>
         <source>Ended shows:</source>
-        <translation type="unfinished"></translation>
+        <translation>Avslutade serier:</translation>
     </message>
     <message>
         <source>Last refresh:</source>
-        <translation type="unfinished"></translation>
+        <translation>Senaste uppdatering:</translation>
     </message>
 </context>
 </TS>
