@@ -42,7 +42,7 @@ class Show(object):
     def __init__(self, name, genre = None, overview = None, network = None,
                  rating = None, actors = [], episode_list = [], image = None,
                  thetvdb_id = -1, season_images = {}, id = -1, language = None,
-                 status = None, airs_time = '', runtime = None,
+                 status = None, airs_time = '', runtime = None, imdb_id = None,
                  downloading_show_image = False, downloading_season_image = False):
         self.id = id
         self.name = name
@@ -55,6 +55,7 @@ class Show(object):
         self.image = image
         self.season_images = season_images
         self.thetvdb_id = thetvdb_id
+        self.imdb_id = imdb_id
         self.language = language
         self.status = status
         self.runtime = runtime if not runtime=='None' else None
@@ -78,7 +79,8 @@ class Show(object):
                 'lastAired': self.get_most_recent_air_date(),
                 'nextToWatch': self.get_next_unwatched_air_date(),
                 'isWatched': self.is_completely_watched(only_aired = True),
-                'isUpdating': self.get_updating()}
+                'isUpdating': self.get_updating(),
+                'imdbId': self.imdb_id if self.imdb_id else ''}
 
     def get_updating(self): return self._updating
     def set_updating(self, updating):
@@ -839,6 +841,7 @@ class SeriesManager(object):
         show_obj.rating = thetvdb_show.rating
         show_obj.actors = thetvdb_show.actors
         show_obj.thetvdb_id = thetvdb_show.id
+        show_obj.imdb_id = thetvdb_show.imdb_id
         return show_obj
 
     def _convert_thetvdbepisode_to_episode(self, thetvdb_episode, show = None):
@@ -864,6 +867,7 @@ class SeriesManager(object):
         show_obj.rating = thetvdb_show.rating
         show_obj.actors = thetvdb_show.actors
         show_obj.thetvdb_id = thetvdb_show.id
+        show_obj.imdb_id = thetvdb_show.imdb_id
         return show_obj
 
     def add_show(self, show):
