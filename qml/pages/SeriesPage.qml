@@ -9,6 +9,7 @@ Page {
     property bool isUpdating: false
     property bool isLoading: false
     property bool hasChanged: false
+    property bool doHighlight: false
 
     function getRandomNumber(min, max) {
         return Math.random() * (max - min) + min;
@@ -30,6 +31,10 @@ Page {
             } else {
                 listView.section.property = ""
             }
+        })
+
+        python.call('seriesfinale.seriesfinale.settingsWrapper.getHighlightSpecial', [], function(result) {
+            doHighlight = result;
         })
     }
 
@@ -146,7 +151,7 @@ Page {
             id: listDelegate
 
             isUpdating: model.isUpdating
-            isPremiere: model.nextIsPremiere
+            isPremiere: model.nextIsPremiere && doHighlight
             title: model.showName
             subtitle: model.infoMarkup
             iconSource: model.coverImage

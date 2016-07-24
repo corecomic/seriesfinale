@@ -46,6 +46,7 @@ class Settings(object):
     SEARCH_LANGUAGE = 'search_language'
     UPDATE_ENDED_SHOWS = 'update_ended_shows'
     LAST_COMPLETE_UPDATE = 'last_complete_update'
+    HIGHLIGHT_SPECIAL = 'highlight_special'
 
     LEFT = 0
     RIGHT = 1
@@ -60,7 +61,8 @@ class Settings(object):
              HIDE_COMPLETED_SHOWS: bool,
              SEARCH_LANGUAGE: str,
              UPDATE_ENDED_SHOWS: bool,
-             LAST_COMPLETE_UPDATE: str}
+             LAST_COMPLETE_UPDATE: str,
+             HIGHLIGHT_SPECIAL: bool}
     DEFAULTS = {EPISODES_ORDER_CONF_NAME: DESCENDING_ORDER,
                 SEASONS_ORDER_CONF_NAME: ASCENDING_ORDER,
                 SHOWS_SORT: RECENT_EPISODE,
@@ -71,7 +73,8 @@ class Settings(object):
                 HIDE_COMPLETED_SHOWS: False,
                 SEARCH_LANGUAGE: 'en',
                 UPDATE_ENDED_SHOWS: True,
-                LAST_COMPLETE_UPDATE: '-'}
+                LAST_COMPLETE_UPDATE: '-',
+                HIGHLIGHT_SPECIAL: False}
 
     conf = dict(DEFAULTS)
     changed = False

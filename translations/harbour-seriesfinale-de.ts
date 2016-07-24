@@ -158,6 +158,10 @@
         <source>Other</source>
         <translation>Anderes</translation>
     </message>
+    <message>
+        <source>Highlight season premiere</source>
+        <translation>Staffel Premiere hervorheben</translation>
+    </message>
 </context>
 <context>
     <name>ShowPage</name>

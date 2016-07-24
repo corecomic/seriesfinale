@@ -80,6 +80,11 @@ class SettingsWrapper():
     def setLastCompleteUpdate(self, date):
         Settings().setConf(Settings.LAST_COMPLETE_UPDATE, date)
 
+    def getHighlightSpecial(self):
+        return Settings().getConf(Settings.HIGHLIGHT_SPECIAL)
+    def setHighlightSpecial(self, add):
+        Settings().setConf(Settings.HIGHLIGHT_SPECIAL, add)
+
 class SeriesFinale:
     def __init__(self):
         # i18n

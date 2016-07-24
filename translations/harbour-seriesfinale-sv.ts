@@ -158,6 +158,10 @@
         <source>Other</source>
         <translation>Annat</translation>
     </message>
+    <message>
+        <source>Highlight season premiere</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ShowPage</name>
