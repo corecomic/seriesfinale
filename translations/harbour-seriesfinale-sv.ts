@@ -160,7 +160,7 @@
     </message>
     <message>
         <source>Highlight season premiere</source>
-        <translation type="unfinished"></translation>
+        <translation>Belys säsongspremiär</translation>
     </message>
 </context>
 <context>
