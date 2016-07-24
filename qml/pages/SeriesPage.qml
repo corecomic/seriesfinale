@@ -146,6 +146,7 @@ Page {
             id: listDelegate
 
             isUpdating: model.isUpdating
+            isPremiere: model.nextIsPremiere
             title: model.showName
             subtitle: model.infoMarkup
             iconSource: model.coverImage

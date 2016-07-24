@@ -80,7 +80,8 @@ class Show(object):
                 'nextToWatch': self.get_next_unwatched_air_date(),
                 'isWatched': self.is_completely_watched(only_aired = True),
                 'isUpdating': self.get_updating(),
-                'imdbId': self.imdb_id if self.imdb_id else ''}
+                'imdbId': self.imdb_id if self.imdb_id else '',
+                'nextIsPremiere' : self.next_is_premiere()}
 
     def get_updating(self): return self._updating
     def set_updating(self, updating):
@@ -226,6 +227,15 @@ class Show(object):
                 if not episode.watched:
                     return False
         return True
+
+    def next_is_premiere(self, season = None):
+        episodes_info = self.get_episodes_info(season)
+        next_episode = episodes_info['next_episode']
+        if next_episode and next_episode.episode_number == 1:
+            return True
+        return False
+
+
 
     def get_episodes_info(self, season = None):
         info = {}
