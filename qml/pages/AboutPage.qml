@@ -69,6 +69,7 @@ Page {
                     wrapMode: Text.WordWrap
                     width: parent.width
                     anchors.horizontalCenter: parent.horizontalCenter
+                    onLinkActivated: Qt.openUrlExternally(link)
                 }
 
                 Label {
