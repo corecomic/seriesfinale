@@ -150,6 +150,18 @@
         <source>Add special seasons</source>
         <translation>Añadir temporadas especiales</translation>
     </message>
+    <message>
+        <source>Update ended shows</source>
+        <translation>Actualizar programas finalizados</translation>
+    </message>
+    <message>
+        <source>Other</source>
+        <translation>Otro</translation>
+    </message>
+    <message>
+        <source>Highlight season premiere</source>
+        <translation>Resaltar temporadas con estrenos</translation>
+    </message>
 </context>
 <context>
     <name>ShowPage</name>
@@ -184,6 +196,41 @@
     <message>
         <source>No seasons</source>
         <translation>No hay temporadas</translation>
+    </message>
+</context>
+<context>
+    <name>StatisticsPage</name>
+    <message>
+        <source>Statistics</source>
+        <translation>Estadísticas</translation>
+    </message>
+    <message>
+        <source>Number of shows:</source>
+        <translation>Número de programas:</translation>
+    </message>
+    <message>
+        <source>Watched shows:</source>
+        <translation>Programas vistos:</translation>
+    </message>
+    <message>
+        <source>Number of episodes:</source>
+        <translation>Número de episodios:</translation>
+    </message>
+    <message>
+        <source>Watched episodes:</source>
+        <translation>Episodios vistos:</translation>
+    </message>
+    <message>
+        <source>Days spent watching:</source>
+        <translation>Días dedicados a ver programas:</translation>
+    </message>
+    <message>
+        <source>Ended shows:</source>
+        <translation>Programas finalizados:</translation>
+    </message>
+    <message>
+        <source>Last refresh:</source>
+        <translation>Última actualización:</translation>
     </message>
 </context>
 </TS>
