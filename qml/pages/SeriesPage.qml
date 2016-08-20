@@ -152,6 +152,7 @@ Page {
 
             isUpdating: model.isUpdating
             isPremiere: model.nextIsPremiere && doHighlight
+            isShowPremiere: model.isShowPremiere && doHighlight
             title: model.showName
             subtitle: model.infoMarkup
             iconSource: model.coverImage

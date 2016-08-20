@@ -81,7 +81,8 @@ class Show(object):
                 'isWatched': self.is_completely_watched(only_aired = True),
                 'isUpdating': self.get_updating(),
                 'imdbId': self.imdb_id if self.imdb_id else '',
-                'nextIsPremiere' : self.next_is_premiere()}
+                'nextIsPremiere' : self.next_is_premiere(),
+                'isShowPremiere' : self.next_is_show_premiere()}
 
     def get_updating(self): return self._updating
     def set_updating(self, updating):
@@ -232,6 +233,13 @@ class Show(object):
         episodes_info = self.get_episodes_info(season)
         next_episode = episodes_info['next_episode']
         if next_episode and next_episode.episode_number == 1:
+            return True
+        return False
+
+    def next_is_show_premiere(self, season = None):
+        episodes_info = self.get_episodes_info(season)
+        next_episode = episodes_info['next_episode']
+        if next_episode and next_episode.episode_number == 1 and next_episode.season_number == '1':
             return True
         return False
 

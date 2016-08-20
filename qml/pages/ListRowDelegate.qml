@@ -13,6 +13,7 @@ ListItem {
 
     property bool isUpdating: false
     property bool isPremiere: false
+    property bool isShowPremiere: false
 
     anchors {
         left: parent.left
@@ -21,7 +22,7 @@ ListItem {
 
     Rectangle {
         anchors.fill: parent
-        color: isPremiere ? Theme.rgba(Theme.highlightBackgroundColor, 0.1) : "transparent"
+        color: "transparent"
 
         Image {
             id: icon
@@ -66,6 +67,7 @@ ListItem {
                 width: parent.width
                 font.pixelSize: Theme.fontSizeMedium
                 font.bold: isPremiere
+                font.underline: isShowPremiere
                 color: highlighted ? Theme.highlightColor : Theme.primaryColor
                 truncationMode: TruncationMode.Fade
             }

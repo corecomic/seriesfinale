@@ -8,6 +8,10 @@
 %changelog
 # * date Author's Name <author's email> version-release
 # - Summary of changes
+* Sat Aug 20 2016 Core Comic <core.comic@gmail.com> 1.4.4-1
+- Updated translation
+- Update premiere highlighting
+
 * Sun Jul 24 2016 Core Comic <core.comic@gmail.com> 1.4.3-1
 - Add link to IMDb on the info page (needs a refresh)
 - Add option to highlight an upcoming season premiere
