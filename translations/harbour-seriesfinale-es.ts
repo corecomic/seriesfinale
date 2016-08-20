@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="es_ES">
+<TS version="2.0" language="es_ES">
 <context>
     <name>AddShow</name>
     <message>
@@ -152,15 +152,15 @@
     </message>
     <message>
         <source>Update ended shows</source>
-        <translation type="unfinished"></translation>
+        <translation>Actualizar programas finalizados</translation>
     </message>
     <message>
         <source>Other</source>
-        <translation type="unfinished"></translation>
+        <translation>Otro</translation>
     </message>
     <message>
         <source>Highlight season premiere</source>
-        <translation type="unfinished"></translation>
+        <translation>Resaltar temporadas con estrenos</translation>
     </message>
 </context>
 <context>
@@ -202,35 +202,35 @@
     <name>StatisticsPage</name>
     <message>
         <source>Statistics</source>
-        <translation type="unfinished"></translation>
+        <translation>Estadísticas</translation>
     </message>
     <message>
         <source>Number of shows:</source>
-        <translation type="unfinished"></translation>
+        <translation>Número de programas:</translation>
     </message>
     <message>
         <source>Watched shows:</source>
-        <translation type="unfinished"></translation>
+        <translation>Programas vistos:</translation>
     </message>
     <message>
         <source>Number of episodes:</source>
-        <translation type="unfinished"></translation>
+        <translation>Número de episodios:</translation>
     </message>
     <message>
         <source>Watched episodes:</source>
-        <translation type="unfinished"></translation>
+        <translation>Episodios vistos:</translation>
     </message>
     <message>
         <source>Days spent watching:</source>
-        <translation type="unfinished"></translation>
+        <translation>Días dedicados a ver programas:</translation>
     </message>
     <message>
         <source>Ended shows:</source>
-        <translation type="unfinished"></translation>
+        <translation>Programas finalizados:</translation>
     </message>
     <message>
         <source>Last refresh:</source>
-        <translation type="unfinished"></translation>
+        <translation>Última actualización:</translation>
     </message>
 </context>
 </TS>
