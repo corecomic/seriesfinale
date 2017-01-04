@@ -15,6 +15,8 @@ ListItem {
     property bool isPremiere: false
     property bool isShowPremiere: false
 
+    property int priority: -1
+
     anchors {
         left: parent.left
         right: parent.right
@@ -44,6 +46,20 @@ ListItem {
             source: ''
             opacity: isUpdating ? 0.2 :
                                   String(source).indexOf('placeholderimage') > -1 ? 0.5 : 1.0
+
+
+        }
+
+        Rectangle {
+            anchors {
+                left: icon.left
+                leftMargin: (icon.width - icon.paintedWidth) / 2
+                verticalCenter: parent.verticalCenter
+            }
+            visible: priority > 0
+            color: priority != -1 ? prioListModel[priority].color : "grey"
+            height: icon.height
+            width: Theme.paddingSmall / 2
         }
 
         BusyIndicator {

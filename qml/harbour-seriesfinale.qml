@@ -16,6 +16,14 @@ ApplicationWindow
 
     property string coverImage: 'seriesfinale_cover.png'
 
+    property var prioListModel: [
+        { name: qsTr("None"), color: "#93a1a1" },
+        { name: qsTr("Pilot"), color: "#2aa198" },
+        { name: qsTr("Episode"), color: "#268bd2" },
+        { name: qsTr("Season"), color: "#6c71c4" },
+        { name: qsTr("Finale"), color: "#d33682" }
+    ]
+
     Component.onDestruction: {
         // for some reason the PyOtherSide atexit handler does not
         // work on Sailfish OS, so we use this
@@ -94,7 +102,7 @@ ApplicationWindow
             // asychronous messages from Python arrive here
             // in Python, this can be accomplished via pyotherside.send()
             console.log('got message from python: ' + data);
-        }       
+        }
     }
 }
 

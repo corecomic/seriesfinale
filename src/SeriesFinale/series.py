@@ -43,6 +43,7 @@ class Show(object):
                  rating = None, actors = [], episode_list = [], image = None,
                  thetvdb_id = -1, season_images = {}, id = -1, language = None,
                  status = None, airs_time = '', runtime = None, imdb_id = None,
+                 priority = 0,
                  downloading_show_image = False, downloading_season_image = False):
         self.id = id
         self.name = name
@@ -58,6 +59,7 @@ class Show(object):
         self.imdb_id = imdb_id
         self.language = language
         self.status = status
+        self.priority = priority
         self.runtime = runtime if not runtime=='None' else None
         try:
             self.airs_time = datetime.strptime(airs_time, '%H:%M').time()
@@ -81,6 +83,7 @@ class Show(object):
                 'isWatched': self.is_completely_watched(only_aired = True),
                 'isUpdating': self.get_updating(),
                 'imdbId': self.imdb_id if self.imdb_id else '',
+                'priority': self.priority,
                 'nextIsPremiere' : self.next_is_premiere(),
                 'isShowPremiere' : self.next_is_show_premiere()}
 
@@ -111,6 +114,11 @@ class Show(object):
     def set_overview(self, overview):
         self.overview = overview
         pyotherside.send('overviewChanged', self.overview)
+
+    def get_priority(self):
+        return self.priority if self.priority else 0,
+    def set_priority(self, prio):
+        self.priority = prio
 
     def get_episodes_by_season(self, season_number):
         if season_number is None:
@@ -813,6 +821,12 @@ class SeriesManager(object):
             series_list.append(show.get_dict())
         return SortedSeriesList(series_list, Settings())
 
+    def get_series_list_by_prio(self):
+        series_list = []
+        for show in self.series_list:
+            series_list.append(show.get_dict())
+        return SortedSeriesList(series_list, Settings(), by_prio = True)
+
     def get_seasons_list(self, show_name):
         show = self.get_show_by_name(show_name)
         return show.get_seasons_model()
@@ -830,6 +844,10 @@ class SeriesManager(object):
                 if not episode.watched:
                     episode_list.append(episode.get_dict())
         return episode_list
+
+    def set_show_priority(self, prio, show_name):
+        show = self.get_show_by_name(show_name)
+        show.set_priority(prio)
 
     def set_episode_watched(self, watched, show_name, episode_name):
         show = self.get_show_by_name(show_name)

@@ -38,9 +38,14 @@ Page {
         })
     }
 
+
+    Component { id: surveyPage; SurveyPage {} }
     onStatusChanged: {
         if (status === PageStatus.Activating && hasChanged) {
             update();
+        }
+        if (status === PageStatus.Active) {
+            pageStack.pushAttached(surveyPage);
         }
     }
 
@@ -156,6 +161,7 @@ Page {
             title: model.showName
             subtitle: model.infoMarkup
             iconSource: model.coverImage
+            priority: model.priority
             Component {
                 id: showPageComponent
                 ShowPage { show: model }
