@@ -54,11 +54,11 @@
     </message>
     <message>
         <source>Mark none</source>
-        <translation>Märk ingen</translation>
+        <translation>Avmarkera alla</translation>
     </message>
     <message>
         <source>No episodes</source>
-        <translation>Inga episoder</translation>
+        <translation>Inga avsnitt</translation>
     </message>
 </context>
 <context>
@@ -85,7 +85,7 @@
     </message>
     <message>
         <source>Mark next episode</source>
-        <translation>Märk nästa episod</translation>
+        <translation>Märk nästa avsnitt</translation>
     </message>
     <message>
         <source>Mark show as watched</source>
@@ -128,11 +128,11 @@
     </message>
     <message>
         <source>By next episode date</source>
-        <translation>Efter nästa episoddatum</translation>
+        <translation>Efter nästa avsnittsdatum</translation>
     </message>
     <message>
         <source>By last aired episode</source>
-        <translation>Efter senast sända episod</translation>
+        <translation>Efter senast sända avsnitt</translation>
     </message>
     <message>
         <source>Seasons sorting</source>
@@ -140,7 +140,7 @@
     </message>
     <message>
         <source>Episode sorting</source>
-        <translation>Episodsortering</translation>
+        <translation>Avsnittssortering</translation>
     </message>
     <message>
         <source>Sort by genre</source>
@@ -164,7 +164,7 @@
     </message>
     <message>
         <source>Sort by priority</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortera efter prioritet</translation>
     </message>
 </context>
 <context>
@@ -218,11 +218,11 @@
     </message>
     <message>
         <source>Number of episodes:</source>
-        <translation>Antal episoder:</translation>
+        <translation>Antal avsnitt:</translation>
     </message>
     <message>
         <source>Watched episodes:</source>
-        <translation>Sedda episoder:</translation>
+        <translation>Sedda avsnitt:</translation>
     </message>
     <message>
         <source>Days spent watching:</source>
@@ -245,7 +245,7 @@
     </message>
     <message>
         <source>Survey Page</source>
-        <translation type="unfinished"></translation>
+        <translation>Enkätsida</translation>
     </message>
     <message>
         <source>Delete show</source>
@@ -261,30 +261,30 @@
     </message>
     <message>
         <source>Change show priority</source>
-        <translation type="unfinished"></translation>
+        <translation>Ändra TV-serieprioritet</translation>
     </message>
 </context>
 <context>
     <name>harbour-seriesfinale</name>
     <message>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen</translation>
     </message>
     <message>
         <source>Pilot</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilotavsnitt</translation>
     </message>
     <message>
         <source>Episode</source>
-        <translation type="unfinished"></translation>
+        <translation>Avsnitt</translation>
     </message>
     <message>
         <source>Season</source>
-        <translation type="unfinished"></translation>
+        <translation>Säsong</translation>
     </message>
     <message>
         <source>Finale</source>
-        <translation type="unfinished"></translation>
+        <translation>Säsongsfinal</translation>
     </message>
 </context>
 </TS>
