@@ -77,14 +77,34 @@ Page {
                     title: show.showName
                 }
 
-                Image {
-                    id: showCover
-                    source: show.coverImage
-                    height: 300
-                    fillMode: "PreserveAspectFit"
-                    smooth: true
+                MouseArea{
+                    width: showCover.width
+                    height: showCover.height + imdbBanner.height
                     anchors.horizontalCenter: parent.horizontalCenter
+
+                    Image {
+                        id: showCover
+                        source: show.coverImage
+                        height: 300
+                        fillMode: "PreserveAspectFit"
+                        smooth: true
+                    }
+
+                    Image {
+                        id: imdbBanner
+                        anchors.top: showCover.bottom
+                        source: '../../src/SeriesFinale/imdb_banner.png'
+                        width: showCover.width
+                        fillMode: "PreserveAspectFit"
+                        smooth: true
+                    }
+
+                    onClicked: {
+                        Qt.openUrlExternally('http://www.imdb.com/title/' + show.imdbId )
+                    }
+
                 }
+
 
                 Text {
                     id: showInfoDescription

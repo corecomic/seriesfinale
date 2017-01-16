@@ -46,7 +46,7 @@ Page {
 
                 Label {
                     font.pixelSize: Theme.fontSizeSmall
-                    text: 'Copyright © 2015 Core Comic'
+                    text: 'Copyright © 2016 Core Comic'
                     color: Theme.primaryColor
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
@@ -69,6 +69,7 @@ Page {
                     wrapMode: Text.WordWrap
                     width: parent.width
                     anchors.horizontalCenter: parent.horizontalCenter
+                    onLinkActivated: Qt.openUrlExternally(link)
                 }
 
                 Label {
@@ -82,6 +83,13 @@ Page {
                     onLinkActivated: Qt.openUrlExternally(link)
                 }
             }
+        }
+    }
+
+    Component { id: statisticsComponent; StatisticsPage {} }
+    onStatusChanged: {
+        if (status === PageStatus.Active) {
+            pageStack.pushAttached(statisticsComponent);
         }
     }
 }

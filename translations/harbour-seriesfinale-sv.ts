@@ -1,166 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="de">
+<TS version="2.1" language="sv">
 <context>
     <name>AddShow</name>
     <message>
         <source>Search options</source>
-        <translation>Such Optionen</translation>
+        <translation>Sökalternativ</translation>
     </message>
     <message>
         <source>Add show</source>
-        <translation>Serie hinzufügen</translation>
+        <translation>Lägg till TV-serie</translation>
     </message>
     <message>
         <source>Search</source>
-        <translation>Suchen</translation>
+        <translation>Sök</translation>
     </message>
 </context>
 <context>
     <name>EpisodePage</name>
     <message>
         <source>Air date:</source>
-        <translation>Sendedatum:</translation>
+        <translation>Sändningsdatum:</translation>
     </message>
     <message>
         <source>Rating:</source>
-        <translation>Bewertung:</translation>
+        <translation>Betyg:</translation>
     </message>
     <message>
         <source>Overview:</source>
-        <translation>Beschreibung:</translation>
+        <translation>Översikt:</translation>
     </message>
     <message>
         <source>Watched</source>
-        <translation>Gesehen</translation>
+        <translation>Sedd</translation>
     </message>
 </context>
 <context>
     <name>SearchSettingsPage</name>
     <message>
         <source>Search options</source>
-        <translation>Such Optionen</translation>
+        <translation>Sökalternativ</translation>
     </message>
     <message>
         <source>Language</source>
-        <translation>Sprache</translation>
+        <translation>Språk</translation>
     </message>
 </context>
 <context>
     <name>SeasonPage</name>
     <message>
         <source>Mark all</source>
-        <translation>Alle markieren</translation>
+        <translation>Märk alla</translation>
     </message>
     <message>
         <source>Mark none</source>
-        <translation>Keine markieren</translation>
+        <translation>Märk ingen</translation>
     </message>
     <message>
         <source>No episodes</source>
-        <translation>Keine Folgen</translation>
+        <translation>Inga episoder</translation>
     </message>
 </context>
 <context>
     <name>SeriesPage</name>
     <message>
         <source>About</source>
-        <translation>Über</translation>
+        <translation>Om</translation>
     </message>
     <message>
         <source>Settings</source>
-        <translation>Einstellungen</translation>
+        <translation>Inställningar</translation>
     </message>
     <message>
         <source>Refreshing...</source>
-        <translation>Aktualisieren...</translation>
+        <translation>Uppdaterar...</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Aktualisieren</translation>
+        <translation>Uppdatera</translation>
     </message>
     <message>
         <source>Add Show</source>
-        <translation>Serie hinzufügen</translation>
+        <translation>Lägg till TV-serie</translation>
     </message>
     <message>
         <source>Mark next episode</source>
-        <translation>Nächste Folge markieren</translation>
+        <translation>Märk nästa episod</translation>
     </message>
     <message>
         <source>Mark show as watched</source>
-        <translation>Ganze Serie markieren</translation>
+        <translation>Märk serien som sedd</translation>
     </message>
     <message>
         <source>Delete show</source>
-        <translation>Serie löschen</translation>
+        <translation>Ta bort serien</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation>Löschen</translation>
+        <translation>Tar bort</translation>
     </message>
     <message>
         <source>No shows</source>
-        <translation>Keine Serien</translation>
+        <translation>Inga serier</translation>
     </message>
 </context>
 <context>
     <name>SettingsPage</name>
     <message>
         <source>Settings</source>
-        <translation>Einstellungen</translation>
+        <translation>Inställningar</translation>
     </message>
     <message>
         <source>Save</source>
-        <translation>Speichern</translation>
-    </message>
-    <message>
-        <source>Show sorting</source>
-        <translation>Serien sortieren</translation>
-    </message>
-    <message>
-        <source>Seasons sorting</source>
-        <translation>Staffeln sortieren</translation>
-    </message>
-    <message>
-        <source>Episode sorting</source>
-        <translation>Folgen sortieren</translation>
-    </message>
-    <message>
-        <source>Sort by genre</source>
-        <translation>Nach Genre sortieren</translation>
-    </message>
-    <message>
-        <source>Add special seasons</source>
-        <translation>Spezial Staffeln hinzufügen</translation>
+        <translation>Spara</translation>
     </message>
     <message>
         <source>Sorting</source>
-        <translation>Sortierung</translation>
+        <translation>Sortering</translation>
+    </message>
+    <message>
+        <source>Show sorting</source>
+        <translation>Visa sortering</translation>
     </message>
     <message>
         <source>By title</source>
-        <translation>Nach Titel</translation>
+        <translation>Efter titel</translation>
     </message>
     <message>
         <source>By next episode date</source>
-        <translation>Nach nächstem Sendedatum</translation>
+        <translation>Efter nästa episoddatum</translation>
     </message>
     <message>
         <source>By last aired episode</source>
-        <translation>Nach letzdem Sendedatum</translation>
+        <translation>Efter senast sända episod</translation>
+    </message>
+    <message>
+        <source>Seasons sorting</source>
+        <translation>Säsongsortering</translation>
+    </message>
+    <message>
+        <source>Episode sorting</source>
+        <translation>Episodsortering</translation>
+    </message>
+    <message>
+        <source>Sort by genre</source>
+        <translation>Sortera efter genre</translation>
+    </message>
+    <message>
+        <source>Add special seasons</source>
+        <translation>Lägg till specialsäsonger</translation>
     </message>
     <message>
         <source>Update ended shows</source>
-        <translation>Beendete Serien aktualisieren</translation>
+        <translation>Uppdatera avslutade serier</translation>
     </message>
     <message>
         <source>Other</source>
-        <translation>Anderes</translation>
+        <translation>Annat</translation>
     </message>
     <message>
         <source>Highlight season premiere</source>
-        <translation>Staffel Premiere hervorheben</translation>
+        <translation>Belys säsongspremiär</translation>
     </message>
     <message>
         <source>Sort by priority</source>
@@ -171,35 +171,35 @@
     <name>ShowPage</name>
     <message>
         <source>Refreshing...</source>
-        <translation>Aktualisieren...</translation>
+        <translation>Uppdaterar...</translation>
     </message>
     <message>
         <source>Refresh</source>
-        <translation>Aktualisieren</translation>
+        <translation>Uppdatera</translation>
     </message>
     <message>
         <source>Info</source>
-        <translation>Informationen</translation>
+        <translation>Info</translation>
     </message>
     <message>
         <source>Mark None</source>
-        <translation>Keine markieren</translation>
+        <translation>Märk ingen</translation>
     </message>
     <message>
         <source>Mark All</source>
-        <translation>Alle markieren</translation>
+        <translation>Märk alla</translation>
     </message>
     <message>
         <source>Delete season</source>
-        <translation>Staffel löschen</translation>
+        <translation>Ta bort säsong</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation>Löschen</translation>
+        <translation>Tar bort</translation>
     </message>
     <message>
         <source>No seasons</source>
-        <translation>Keine Staffeln</translation>
+        <translation>Inga säsonger</translation>
     </message>
 </context>
 <context>
@@ -210,38 +210,38 @@
     </message>
     <message>
         <source>Number of shows:</source>
-        <translation>Anzahl Serien:</translation>
+        <translation>Antal serier:</translation>
     </message>
     <message>
         <source>Watched shows:</source>
-        <translation>Gesehene Serien:</translation>
+        <translation>Sedda serier:</translation>
     </message>
     <message>
         <source>Number of episodes:</source>
-        <translation>Anzahl Folgen:</translation>
+        <translation>Antal episoder:</translation>
     </message>
     <message>
         <source>Watched episodes:</source>
-        <translation>Gesehene Folgen:</translation>
+        <translation>Sedda episoder:</translation>
     </message>
     <message>
         <source>Days spent watching:</source>
-        <translation>Tage mit zuschauen verbracht:</translation>
+        <translation>Dagar som gått åt till att titta:</translation>
     </message>
     <message>
         <source>Ended shows:</source>
-        <translation>Beendete Serien:</translation>
+        <translation>Avslutade serier:</translation>
     </message>
     <message>
         <source>Last refresh:</source>
-        <translation>Zuletzt aktualisiert:</translation>
+        <translation>Senaste uppdatering:</translation>
     </message>
 </context>
 <context>
     <name>SurveyPage</name>
     <message>
         <source>Add Show</source>
-        <translation type="unfinished">Serie hinzufügen</translation>
+        <translation type="unfinished">Lägg till TV-serie</translation>
     </message>
     <message>
         <source>Survey Page</source>
@@ -249,15 +249,15 @@
     </message>
     <message>
         <source>Delete show</source>
-        <translation type="unfinished">Serie löschen</translation>
+        <translation type="unfinished">Ta bort serien</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation type="unfinished">Löschen</translation>
+        <translation type="unfinished">Tar bort</translation>
     </message>
     <message>
         <source>No shows</source>
-        <translation type="unfinished">Keine Serien</translation>
+        <translation type="unfinished">Inga serier</translation>
     </message>
     <message>
         <source>Change show priority</source>

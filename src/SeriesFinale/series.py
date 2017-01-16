@@ -42,7 +42,8 @@ class Show(object):
     def __init__(self, name, genre = None, overview = None, network = None,
                  rating = None, actors = [], episode_list = [], image = None,
                  thetvdb_id = -1, season_images = {}, id = -1, language = None,
-                 status = None, airs_time = '', runtime = None,
+                 status = None, airs_time = '', runtime = None, imdb_id = None,
+                 priority = 0,
                  downloading_show_image = False, downloading_season_image = False):
         self.id = id
         self.name = name
@@ -55,8 +56,10 @@ class Show(object):
         self.image = image
         self.season_images = season_images
         self.thetvdb_id = thetvdb_id
+        self.imdb_id = imdb_id
         self.language = language
         self.status = status
+        self.priority = priority
         self.runtime = runtime if not runtime=='None' else None
         try:
             self.airs_time = datetime.strptime(airs_time, '%H:%M').time()
@@ -78,7 +81,11 @@ class Show(object):
                 'lastAired': self.get_most_recent_air_date(),
                 'nextToWatch': self.get_next_unwatched_air_date(),
                 'isWatched': self.is_completely_watched(only_aired = True),
-                'isUpdating': self.get_updating()}
+                'isUpdating': self.get_updating(),
+                'imdbId': self.imdb_id if self.imdb_id else '',
+                'priority': self.priority,
+                'nextIsPremiere' : self.next_is_premiere(),
+                'isShowPremiere' : self.next_is_show_premiere()}
 
     def get_updating(self): return self._updating
     def set_updating(self, updating):
@@ -107,6 +114,11 @@ class Show(object):
     def set_overview(self, overview):
         self.overview = overview
         pyotherside.send('overviewChanged', self.overview)
+
+    def get_priority(self):
+        return self.priority if self.priority else 0,
+    def set_priority(self, prio):
+        self.priority = prio
 
     def get_episodes_by_season(self, season_number):
         if season_number is None:
@@ -224,6 +236,22 @@ class Show(object):
                 if not episode.watched:
                     return False
         return True
+
+    def next_is_premiere(self, season = None):
+        episodes_info = self.get_episodes_info(season)
+        next_episode = episodes_info['next_episode']
+        if next_episode and next_episode.episode_number == 1:
+            return True
+        return False
+
+    def next_is_show_premiere(self, season = None):
+        episodes_info = self.get_episodes_info(season)
+        next_episode = episodes_info['next_episode']
+        if next_episode and next_episode.episode_number == 1 and next_episode.season_number == '1':
+            return True
+        return False
+
+
 
     def get_episodes_info(self, season = None):
         info = {}
@@ -676,7 +704,14 @@ class SeriesManager(object):
         i = 0
         n_shows = len(show_list)
         for i in range(n_shows):
+            update_ended_shows = Settings().getConf(Settings.UPDATE_ENDED_SHOWS)
             show = show_list[i]
+            if show.status and show.status == 'Ended' and not update_ended_shows:
+                async_item = AsyncItem(self._empty_callback, (),
+                                       self._set_show_episodes_complete_cb,
+                                       (show, update_images_worker, i == n_shows - 1))
+                async_worker.queue.put(async_item)
+                continue
             pyotherside.send('episodesListUpdating', show.get_name())
             show.set_updating(True)
             async_item = AsyncItem(self.thetvdb.get_show_and_episodes,
@@ -712,6 +747,9 @@ class SeriesManager(object):
             return
         for show_id, show in tvdbshows:
             pass
+
+    def _empty_callback(self):
+        pass
 
     def get_complete_show(self, show_name, language = "en"):
         # Test if the show has already been added.
@@ -783,6 +821,12 @@ class SeriesManager(object):
             series_list.append(show.get_dict())
         return SortedSeriesList(series_list, Settings())
 
+    def get_series_list_by_prio(self):
+        series_list = []
+        for show in self.series_list:
+            series_list.append(show.get_dict())
+        return SortedSeriesList(series_list, Settings(), by_prio = True)
+
     def get_seasons_list(self, show_name):
         show = self.get_show_by_name(show_name)
         return show.get_seasons_model()
@@ -800,6 +844,10 @@ class SeriesManager(object):
                 if not episode.watched:
                     episode_list.append(episode.get_dict())
         return episode_list
+
+    def set_show_priority(self, prio, show_name):
+        show = self.get_show_by_name(show_name)
+        show.set_priority(prio)
 
     def set_episode_watched(self, watched, show_name, episode_name):
         show = self.get_show_by_name(show_name)
@@ -829,6 +877,7 @@ class SeriesManager(object):
         show_obj.rating = thetvdb_show.rating
         show_obj.actors = thetvdb_show.actors
         show_obj.thetvdb_id = thetvdb_show.id
+        show_obj.imdb_id = thetvdb_show.imdb_id
         return show_obj
 
     def _convert_thetvdbepisode_to_episode(self, thetvdb_episode, show = None):
@@ -854,6 +903,7 @@ class SeriesManager(object):
         show_obj.rating = thetvdb_show.rating
         show_obj.actors = thetvdb_show.actors
         show_obj.thetvdb_id = thetvdb_show.id
+        show_obj.imdb_id = thetvdb_show.imdb_id
         return show_obj
 
     def add_show(self, show):
@@ -901,7 +951,7 @@ class SeriesManager(object):
             return
         self._assign_existing_images_to_show(show)
         seasons = show.get_seasons()
-        for key, image in show.season_images.items():
+        for key, image in list(show.season_images.items()):
             if not os.path.isfile(image):
                 del show.season_images[key]
                 self.changed = True

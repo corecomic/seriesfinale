@@ -56,9 +56,10 @@ class ListModel():
     def __getitem__(self, key):
         return self._items[key]
 
-def SortedSeriesList(series_list, settings):
+def SortedSeriesList(series_list, settings, by_prio = False):
         sortOrder = settings.getConf(settings.SHOWS_SORT)
         sortByGenre = settings.getConf(settings.SHOWS_SORT_BY_GENRE)
+        sortByPrio = settings.getConf(settings.SHOWS_SORT_BY_PRIO) or by_prio
         hideCompleted = settings.getConf(settings.HIDE_COMPLETED_SHOWS)
 
         sorted_list = series_list
@@ -76,7 +77,9 @@ def SortedSeriesList(series_list, settings):
         else:
             sorted_list = series_list
 
-        if sortByGenre:
+        if sortByPrio:
+            sorted_list = sorted(sorted_list, key=lambda k: k['priority'])
+        elif sortByGenre:
             sorted_list = sorted(sorted_list, key=lambda k: k['showGenre'])
 
         return sorted_list
@@ -84,7 +87,7 @@ def SortedSeriesList(series_list, settings):
 
 def SortedSeasonsList(season_list, settings):
     sortOrder = settings.getConf(settings.SEASONS_ORDER_CONF_NAME)
-    season_list = sorted(season_list, key=lambda k: k['seasonNumber'])
+    season_list = sorted(season_list, key=lambda k: int(k['seasonNumber']))
     if (sortOrder == settings.DESCENDING_ORDER):
         return list(reversed(season_list))
     return season_list

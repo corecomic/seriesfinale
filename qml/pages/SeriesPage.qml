@@ -9,6 +9,7 @@ Page {
     property bool isUpdating: false
     property bool isLoading: false
     property bool hasChanged: false
+    property bool doHighlight: false
 
     function getRandomNumber(min, max) {
         return Math.random() * (max - min) + min;
@@ -31,11 +32,20 @@ Page {
                 listView.section.property = ""
             }
         })
+
+        python.call('seriesfinale.seriesfinale.settingsWrapper.getHighlightSpecial', [], function(result) {
+            doHighlight = result;
+        })
     }
 
+
+    Component { id: surveyPage; SurveyPage {} }
     onStatusChanged: {
         if (status === PageStatus.Activating && hasChanged) {
             update();
+        }
+        if (status === PageStatus.Active) {
+            pageStack.pushAttached(surveyPage);
         }
     }
 
@@ -114,7 +124,10 @@ Page {
                 text: seriesPage.isUpdating ? qsTr("Refreshing...") : qsTr("Refresh")
                 visible: seriesList.count != 0
                 enabled: !seriesPage.isUpdating
-                onClicked: python.call('seriesfinale.seriesfinale.series_manager.update_all_shows_episodes', [])
+                onClicked: {
+                    python.call('seriesfinale.seriesfinale.settingsWrapper.setLastCompleteUpdate', [new Date().toISOString().slice(0, 10)]);
+                    python.call('seriesfinale.seriesfinale.series_manager.update_all_shows_episodes', []);
+                }
             }
             MenuItem {
                 text: qsTr("Add Show")
@@ -143,9 +156,12 @@ Page {
             id: listDelegate
 
             isUpdating: model.isUpdating
+            isPremiere: model.nextIsPremiere && doHighlight
+            isShowPremiere: model.isShowPremiere && doHighlight
             title: model.showName
             subtitle: model.infoMarkup
             iconSource: model.coverImage
+            priority: model.priority
             Component {
                 id: showPageComponent
                 ShowPage { show: model }

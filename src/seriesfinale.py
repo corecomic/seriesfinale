@@ -65,10 +65,30 @@ class SettingsWrapper():
     def setSortByGenre(self, add):
         Settings().setConf(Settings.SHOWS_SORT_BY_GENRE, add)
 
+    def getSortByPrio(self):
+        return Settings().getConf(Settings.SHOWS_SORT_BY_PRIO)
+    def setSortByPrio(self, add):
+        Settings().setConf(Settings.SHOWS_SORT_BY_PRIO, add)
+
     def getSearchLanguage(self):
         return Settings().getConf(Settings.SEARCH_LANGUAGE)
     def setSearchLanguage(self, language):
         Settings().setConf(Settings.SEARCH_LANGUAGE, language)
+
+    def getUpdateEndedShows(self):
+        return Settings().getConf(Settings.UPDATE_ENDED_SHOWS)
+    def setUpdateEndedShows(self, add):
+        Settings().setConf(Settings.UPDATE_ENDED_SHOWS, add)
+
+    def getLastCompleteUpdate(self):
+        return Settings().getConf(Settings.LAST_COMPLETE_UPDATE)
+    def setLastCompleteUpdate(self, date):
+        Settings().setConf(Settings.LAST_COMPLETE_UPDATE, date)
+
+    def getHighlightSpecial(self):
+        return Settings().getConf(Settings.HIGHLIGHT_SPECIAL)
+    def setHighlightSpecial(self, add):
+        Settings().setConf(Settings.HIGHLIGHT_SPECIAL, add)
 
 class SeriesFinale:
     def __init__(self):
@@ -107,6 +127,36 @@ class SeriesFinale:
 
     def getVersion(self):
         return self.version
+
+    def getStatistics(self):
+        n_series = len(self.series_manager.series_list)
+        n_series_watched = 0
+        n_series_ended = 0
+        n_all_episodes = 0
+        n_episodes_to_watch = 0
+        time_watched = 0
+        for i in range(n_series):
+            show = self.series_manager.series_list[i]
+            episodes = show.episode_list
+            aired_episodes = [episode for episode in episodes \
+                              if episode.already_aired()]
+            episodes_to_watch = [episode for episode in aired_episodes \
+                                 if not episode.watched]
+            n_all_episodes += len(aired_episodes)
+            if episodes_to_watch:
+                n_episodes_to_watch += len(episodes_to_watch)
+            else:
+                n_series_watched += 1
+            if show.runtime:
+                time_watched += (len(aired_episodes)-len(episodes_to_watch))*int(show.runtime)
+            if show.status and show.status == 'Ended':
+                n_series_ended += 1
+        return {'numSeries': n_series,
+                'numSeriesWatched': n_series_watched,
+                'numSeriesEnded': n_series_ended,
+                'numEpisodes': n_all_episodes,
+                'numEpisodesWatched': n_all_episodes-n_episodes_to_watch,
+                'timeWatched': time_watched}
 
     def closeEvent(self):
         # If the shows list is empty but the user hasn't deleted

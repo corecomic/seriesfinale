@@ -39,11 +39,15 @@ class Settings(object):
     SEASONS_ORDER_CONF_NAME = 'seasons_order'
     SHOWS_SORT = 'shows_sort'
     SHOWS_SORT_BY_GENRE = 'sort_by_genre'
+    SHOWS_SORT_BY_PRIO = 'sort_by_prio'
     SCREEN_ROTATION = 'screen_rotation'
     ADD_SPECIAL_SEASONS = 'add_special_seasons'
     EPISODES_CHECK_POSITION = 'episodes_check_position'
     HIDE_COMPLETED_SHOWS = 'hide_completed_shows'
     SEARCH_LANGUAGE = 'search_language'
+    UPDATE_ENDED_SHOWS = 'update_ended_shows'
+    LAST_COMPLETE_UPDATE = 'last_complete_update'
+    HIGHLIGHT_SPECIAL = 'highlight_special'
 
     LEFT = 0
     RIGHT = 1
@@ -52,20 +56,28 @@ class Settings(object):
              SEASONS_ORDER_CONF_NAME: int,
              SHOWS_SORT: int,
              SHOWS_SORT_BY_GENRE: bool,
+             SHOWS_SORT_BY_PRIO: bool,
              SCREEN_ROTATION: int,
              ADD_SPECIAL_SEASONS: bool,
              EPISODES_CHECK_POSITION: int,
              HIDE_COMPLETED_SHOWS: bool,
-             SEARCH_LANGUAGE: str}
+             SEARCH_LANGUAGE: str,
+             UPDATE_ENDED_SHOWS: bool,
+             LAST_COMPLETE_UPDATE: str,
+             HIGHLIGHT_SPECIAL: bool}
     DEFAULTS = {EPISODES_ORDER_CONF_NAME: DESCENDING_ORDER,
                 SEASONS_ORDER_CONF_NAME: ASCENDING_ORDER,
                 SHOWS_SORT: RECENT_EPISODE,
                 SHOWS_SORT_BY_GENRE: False,
+                SHOWS_SORT_BY_PRIO: False,
                 SCREEN_ROTATION: AUTOMATIC,
                 ADD_SPECIAL_SEASONS: True,
                 EPISODES_CHECK_POSITION: RIGHT,
                 HIDE_COMPLETED_SHOWS: False,
-                SEARCH_LANGUAGE: 'en'}
+                SEARCH_LANGUAGE: 'en',
+                UPDATE_ENDED_SHOWS: True,
+                LAST_COMPLETE_UPDATE: '-',
+                HIGHLIGHT_SPECIAL: False}
 
     conf = dict(DEFAULTS)
     changed = False

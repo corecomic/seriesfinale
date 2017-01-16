@@ -150,6 +150,22 @@
         <source>Add special seasons</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Update ended shows</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Other</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Highlight season premiere</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sort by priority</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ShowPage</name>
@@ -183,6 +199,91 @@
     </message>
     <message>
         <source>No seasons</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StatisticsPage</name>
+    <message>
+        <source>Statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Number of shows:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Watched shows:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Number of episodes:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Watched episodes:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Days spent watching:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ended shows:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Last refresh:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SurveyPage</name>
+    <message>
+        <source>Add Show</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Survey Page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete show</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No shows</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Change show priority</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>harbour-seriesfinale</name>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pilot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Episode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Season</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Finale</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

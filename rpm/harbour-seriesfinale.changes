@@ -8,6 +8,34 @@
 %changelog
 # * date Author's Name <author's email> version-release
 # - Summary of changes
+* Wed Jan 04 2017 Core Comic <core.comic@gmail.com> 1.5.0-1
+- New survey page that allows custom sorting of the shows
+
+* Sat Aug 20 2016 Core Comic <core.comic@gmail.com> 1.4.4-1
+- Updated translation
+- Update premiere highlighting
+
+* Sun Jul 24 2016 Core Comic <core.comic@gmail.com> 1.4.3-1
+- Add link to IMDb on the info page (needs a refresh)
+- Add option to highlight an upcoming season premiere
+
+* Sun Jul 03 2016 Core Comic <core.comic@gmail.com> 1.4.2-1
+- Add number of ended shows and last refresh date to statistics
+
+* Sat May 14 2016 Core Comic <core.comic@gmail.com> 1.4.1-1
+- Add swedish translation
+
+* Sun May 08 2016 Core Comic <core.comic@gmail.com> 1.4.0-1
+- Add setting to select whether ended shows are also refreshed
+- Added some statistics (about page)
+- Fix stuttering on main page, improve responsiveness
+
+* Mon Jan 25 2016 Core Comic <core.comic@gmail.com> 1.3.2-1
+- Fix season sorting
+- Fix redownloading images
+
+* Wed Jan 06 2016 Core Comic <core.comic@gmail.com> 1.3.1-1
+- Add spanish and german translation
 
 * Mon Jan 04 2016 Core Comic <core.comic@gmail.com> 1.3.0-1
 - Add menu item for refreshing a single show only
