@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="es_ES">
+<TS version="2.1" language="es_ES">
 <context>
     <name>AddShow</name>
     <message>
@@ -162,6 +162,10 @@
         <source>Highlight season premiere</source>
         <translation>Resaltar temporadas con estrenos</translation>
     </message>
+    <message>
+        <source>Sort by priority</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ShowPage</name>
@@ -231,6 +235,56 @@
     <message>
         <source>Last refresh:</source>
         <translation>Última actualización:</translation>
+    </message>
+</context>
+<context>
+    <name>SurveyPage</name>
+    <message>
+        <source>Add Show</source>
+        <translation type="unfinished">Añadir programa</translation>
+    </message>
+    <message>
+        <source>Survey Page</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Delete show</source>
+        <translation type="unfinished">Borrar programa</translation>
+    </message>
+    <message>
+        <source>Deleting</source>
+        <translation type="unfinished">Borrando</translation>
+    </message>
+    <message>
+        <source>No shows</source>
+        <translation type="unfinished">No hay programas</translation>
+    </message>
+    <message>
+        <source>Change show priority</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>harbour-seriesfinale</name>
+    <message>
+        <source>None</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pilot</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Episode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Season</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Finale</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
