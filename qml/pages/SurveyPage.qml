@@ -20,6 +20,7 @@ Page {
 
     onStatusChanged: {
         if (status === PageStatus.Activating && hasChanged) {
+            isLoading = true;
             update();
         }
     }

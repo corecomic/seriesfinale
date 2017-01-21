@@ -164,7 +164,7 @@
     </message>
     <message>
         <source>Sort by priority</source>
-        <translation type="unfinished"></translation>
+        <translation>Nach Priorität sortieren</translation>
     </message>
 </context>
 <context>
@@ -241,50 +241,50 @@
     <name>SurveyPage</name>
     <message>
         <source>Add Show</source>
-        <translation type="unfinished">Serie hinzufügen</translation>
+        <translation>Serie hinzufügen</translation>
     </message>
     <message>
         <source>Survey Page</source>
-        <translation type="unfinished"></translation>
+        <translation>Erkundenh</translation>
     </message>
     <message>
         <source>Delete show</source>
-        <translation type="unfinished">Serie löschen</translation>
+        <translation>Serie löschen</translation>
     </message>
     <message>
         <source>Deleting</source>
-        <translation type="unfinished">Löschen</translation>
+        <translation>Löschen</translation>
     </message>
     <message>
         <source>No shows</source>
-        <translation type="unfinished">Keine Serien</translation>
+        <translation>Keine Serien</translation>
     </message>
     <message>
         <source>Change show priority</source>
-        <translation type="unfinished"></translation>
+        <translation>Priorität ändern</translation>
     </message>
 </context>
 <context>
     <name>harbour-seriesfinale</name>
     <message>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine</translation>
     </message>
     <message>
         <source>Pilot</source>
-        <translation type="unfinished"></translation>
+        <translation>Pilot</translation>
     </message>
     <message>
         <source>Episode</source>
-        <translation type="unfinished"></translation>
+        <translation>Episode</translation>
     </message>
     <message>
         <source>Season</source>
-        <translation type="unfinished"></translation>
+        <translation>Staffel</translation>
     </message>
     <message>
         <source>Finale</source>
-        <translation type="unfinished"></translation>
+        <translation>Finale</translation>
     </message>
 </context>
 </TS>

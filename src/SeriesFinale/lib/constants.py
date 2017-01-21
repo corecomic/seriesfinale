@@ -24,7 +24,7 @@ import sys
 SF_NAME = 'SeriesFinale'
 SF_COMPACT_NAME = 'seriesfinale'
 SF_HARBOUR_NAME = 'harbour-' + SF_COMPACT_NAME
-SF_VERSION = '1.5.0'
+SF_VERSION = '1.5.1'
 SF_DESCRIPTION = 'SeriesFinale is a TV series browser and tracker application'
 SF_URL = 'https://github.com/corecomic/seriesfinale'
 SF_COPYRIGHT = 'Copyright © 2015-2017 Core Comic\n' \
