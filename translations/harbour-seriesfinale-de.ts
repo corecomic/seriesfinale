@@ -245,7 +245,7 @@
     </message>
     <message>
         <source>Survey Page</source>
-        <translation>Erkundenh</translation>
+        <translation>Erkunden</translation>
     </message>
     <message>
         <source>Delete show</source>
