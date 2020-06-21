@@ -39,7 +39,7 @@
         <location filename="src/SeriesFinale/series.py" line="282"/>
         <location filename="src/SeriesFinale/series.py" line="318"/>
         <source>No episodes to watch</source>
-        <translation>Keine ungesehene Folgen</translation>
+        <translation>Keine ungesehenen Folgen</translation>
     </message>
     <message>
         <location filename="src/SeriesFinale/series.py" line="286"/>
