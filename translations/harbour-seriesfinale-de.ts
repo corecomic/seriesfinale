@@ -5,7 +5,7 @@
     <name>AddShow</name>
     <message>
         <source>Search options</source>
-        <translation>Such Optionen</translation>
+        <translation>Suchoptionen</translation>
     </message>
     <message>
         <source>Add show</source>
@@ -39,7 +39,7 @@
     <name>SearchSettingsPage</name>
     <message>
         <source>Search options</source>
-        <translation>Such Optionen</translation>
+        <translation>Suchoptionen</translation>
     </message>
     <message>
         <source>Language</source>
@@ -73,7 +73,7 @@
     </message>
     <message>
         <source>Refreshing...</source>
-        <translation>Aktualisieren...</translation>
+        <translation>Aktualisieren ...</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -132,7 +132,7 @@
     </message>
     <message>
         <source>Add special seasons</source>
-        <translation>Spezial Staffeln hinzufügen</translation>
+        <translation>Spezialstaffeln hinzufügen</translation>
     </message>
     <message>
         <source>Sorting</source>
@@ -148,7 +148,7 @@
     </message>
     <message>
         <source>By last aired episode</source>
-        <translation>Nach letzdem Sendedatum</translation>
+        <translation>Nach letztem Sendedatum</translation>
     </message>
     <message>
         <source>Update ended shows</source>
@@ -160,7 +160,7 @@
     </message>
     <message>
         <source>Highlight season premiere</source>
-        <translation>Staffel Premiere hervorheben</translation>
+        <translation>Staffel-Premiere hervorheben</translation>
     </message>
     <message>
         <source>Sort by priority</source>
@@ -171,7 +171,7 @@
     <name>ShowPage</name>
     <message>
         <source>Refreshing...</source>
-        <translation>Aktualisieren...</translation>
+        <translation>Aktualisieren ...</translation>
     </message>
     <message>
         <source>Refresh</source>
@@ -226,7 +226,7 @@
     </message>
     <message>
         <source>Days spent watching:</source>
-        <translation>Tage mit zuschauen verbracht:</translation>
+        <translation>Tage mit Zuschauen verbracht:</translation>
     </message>
     <message>
         <source>Ended shows:</source>
