@@ -1,9 +1,8 @@
-*.pro*
+*.user*
 build/
 dist/
 __pycache__
 rpm/*.rpm
 TODO
 *~
-Makefile
 MANIFEST
